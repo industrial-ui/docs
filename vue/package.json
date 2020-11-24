@@ -1,9 +1,11 @@
 {
   "name": "industrial-ui-docs-vue",
   "scripts": {
+    "postinstall": "cd ../layout && npm ci && npm run layout:build && mv __sapper__/export ../vue/public",
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "export": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build": "npm run postinstall && npm run export"
   },
   "dependencies": {
     "core-js": "^3.6.5",

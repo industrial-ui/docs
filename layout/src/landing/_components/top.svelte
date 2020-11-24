@@ -3,7 +3,7 @@
     <img class="logo" src="/img/logo.png" alt="Industrial-ui logo" />
     <h1>Industrial-ui</h1>
     <p>Styleless, pure functional<br /> UI components</p>
-    <a href="https://vue.industrial-ui.com/en">Go to Vue documentation</a>
+    <a href="https://vue.industrial-ui.com">Go to Vue documentation</a>
   </div>
 </header>
 
