@@ -9,9 +9,9 @@
     "sapper:build": "cross-env NODE_ENV=production sapper build --legacy",
     "sapper:export": "cross-env NODE_ENV=production sapper export --legacy",
 
-    "dev": "npm-run-all validate:dev sapper:dev",
+    "dev": "run-p validate:dev sapper:dev",
     "start": "npm run sapper:build && node ./__sapper__/build",
-    "export": "npm run sapper:export"
+    "build": "npm run sapper:export"
   },
 
   "dependencies": {
