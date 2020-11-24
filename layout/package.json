@@ -5,13 +5,15 @@
   "scripts": {
     "validate": "svelte-check --ignore src/node_modules/@sapper",
     "validate:dev": "svelte-check --ignore src/node_modules/@sapper --watch",
-    "sapper:dev": "sapper dev",
-    "sapper:build": "cross-env NODE_ENV=production sapper build --legacy",
-    "sapper:export": "cross-env NODE_ENV=production sapper export --legacy",
 
-    "dev": "run-p validate:dev sapper:dev",
-    "start": "npm run sapper:build && node ./__sapper__/build",
-    "build": "npm run sapper:export"
+    "landing:dev": "sapper dev --routes src/landing",
+    "landing:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/landing",
+
+    "layout:dev": "sapper dev --routes src/layout",
+    "layout:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/layout",
+
+    "dev": "run-p validate:dev layout:dev",
+    "landing-dev": "run-p validate:dev landing:dev"
   },
 
   "dependencies": {

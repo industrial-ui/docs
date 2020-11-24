@@ -4,7 +4,6 @@
     <h1>Industrial-ui</h1>
     <p>Styleless, pure functional<br /> UI components</p>
     <a href="https://vue.industrial-ui.com/en">Go to Vue documentation</a>
-    <a href="/docs" class="hidden">Go to Vue documentation</a>
   </div>
 </header>
 
@@ -48,9 +47,6 @@
     border-radius: 4px;
     font-size: 9px;
     background-color: #F168B4;
-  }
-  a.hidden {
-    display: none;
   }
 
   br {
