@@ -110,7 +110,7 @@ export default {
 		onwarn,
 	},
 
-	serviceworker: {
+	/*serviceworker: {
 		input: config.serviceworker.input().replace(/\.js$/, '.ts'),
 		output: { ...config.serviceworker.output(), sourcemap },
 		plugins: [
@@ -131,5 +131,5 @@ export default {
 
 		preserveEntrySignatures: false,
 		onwarn,
-	},
+	},*/
 };
