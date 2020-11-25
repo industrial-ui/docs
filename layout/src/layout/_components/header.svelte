@@ -1,13 +1,15 @@
 <script lang="ts">
+  import Link from './link.svelte';
+
   export let open: boolean;
 </script>
 
 <div class="left">
-  <a href="/">
+  <Link to="/">
     <div class="logo">
       <h2>Industrial-ui</h2>
     </div>
-  </a>
+  </Link>
 </div>
 
 <div class="right">

@@ -1,4 +1,6 @@
 module.exports = [
+  'install',
+  'config',
   'button',
   'dropdown',
   'modal',

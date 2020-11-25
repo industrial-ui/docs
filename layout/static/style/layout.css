@@ -38,41 +38,14 @@ a {
 }
 
 @media screen and (max-width: 1024px) {
-  .nav {
-    width: 25%;
-  }
-
   .section {
     left: 25%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .nav {
-    left: unset;
-    right: 100%;
-    transition: right .3s;
-    width: 50%;
-    background: #FBFBFB;
-  }
-
-  .nav.open {
-    display: block;
-    right: 50%;
-  }
-
   .section {
     width: 100%;
     left: 0;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .nav {
-    width: 70%;
-  }
-
-  .nav.open {
-    right: 30%;
   }
 }

@@ -9,6 +9,18 @@
   </div>
 </template>
 
+<script lang="ts">
+  import Vue from 'vue';
+
+  export default Vue.extend({
+    mounted () {
+      window.addEventListener('iui-redirect', () => {
+        this.$router.push(sessionStorage.getItem('iui-redirect') || '/main');
+      });
+    },
+  });
+</script>
+
 <style>
 #nav {
   padding: 30px;

@@ -1,0 +1,102 @@
+.nav > div {
+  margin-top: 1rem;
+}
+
+.nav header, .nav a {
+  padding-left: 2rem;
+  line-height: 2em;
+}
+
+.nav header {
+  text-transform: uppercase;
+  color: #555555;
+  font-size: .8em;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  height: 2em;
+}
+
+.nav li:hover {
+  background: #dcddf9;
+}
+
+.nav li.active {
+  color: #6C6EE5;
+}
+
+.nav a:not([target="_blank"]) {
+  width: inherit;
+  height: inherit;
+  display: block;
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+.nav a:not([target="_blank"]):hover {
+  font-size: 1.05em;
+  transition: all .1s;
+}
+
+.nav a[target="_blank"] {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav a[target="_blank"] img {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.nav a[target="_blank"] span {
+  margin-right: 0.75rem;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+@media screen and (min-width: 768px) {
+  .nav a[target="_blank"] {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .nav {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    left: unset;
+    right: 100%;
+    transition: right .3s;
+    width: 50%;
+    background: #FBFBFB;
+  }
+
+  .nav.open {
+    display: block;
+    right: 50%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .nav {
+    width: 70%;
+  }
+
+  .nav.open {
+    right: 30%;
+  }
+}
