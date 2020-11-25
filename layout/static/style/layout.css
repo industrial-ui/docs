@@ -26,7 +26,7 @@ a {
 /**
   Main part (controlled by micro-frontend app)
  */
-.section {
+#app {
   position: absolute;
   top: 3.7rem;
   bottom: 0;
@@ -38,13 +38,13 @@ a {
 }
 
 @media screen and (max-width: 1024px) {
-  .section {
+  #app {
     left: 25%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .section {
+  #app {
     width: 100%;
     left: 0;
   }

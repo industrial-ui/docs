@@ -2,7 +2,7 @@
   "name": "industrial-ui-docs-vue",
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "postinstall": "sh build/postinstall.sh && node build/app-population.js",
+    "postinstall": "sh build/postinstall.sh",
     "dev": "nuxt-ts",
     "export": "nuxt-ts generate",
     "build": "npm run postinstall && npm run export"

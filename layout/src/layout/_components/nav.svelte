@@ -1,7 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
   import navigation from '../../../../common/navigation';
-  import Link from './link.svelte';
 
   const dispatch = createEventDispatcher();
 </script>
@@ -14,9 +13,9 @@
     <ul>
       {#each group.nested as route}
         <li>
-          <Link to="/eng/{route.slug}" on:click={() => dispatch('close')}>
+          <a href="/eng/{route.slug}" on:click={() => dispatch('close')}>
             {route.name}
-          </Link>
+          </a>
         </li>
       {/each}
     </ul>
