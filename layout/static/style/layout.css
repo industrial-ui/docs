@@ -1,0 +1,78 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+  Navigation styles
+ */
+.nav {
+  position: fixed;
+  top: 3.7rem;
+  left: 0;
+  bottom: 0;
+  background: rgba(220, 220, 220, .1);
+  width: calc(100vw / 12 * 2);
+  overflow-y: auto;
+  border-right: 1px solid #EEEEEE;
+  z-index: 4;
+}
+
+/**
+  Main part (controlled by micro-frontend app)
+ */
+.section {
+  position: absolute;
+  top: 3.7rem;
+  bottom: 0;
+  left: calc(100vw / 12 * 2);
+  right: 0;
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav {
+    width: 25%;
+  }
+
+  .section {
+    left: 25%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    left: unset;
+    right: 100%;
+    transition: right .3s;
+    width: 50%;
+    background: #FBFBFB;
+  }
+
+  .nav.open {
+    display: block;
+    right: 50%;
+  }
+
+  .section {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .nav {
+    width: 70%;
+  }
+
+  .nav.open {
+    right: 30%;
+  }
+}

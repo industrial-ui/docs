@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Noto Sans'), local('NotoSans'), url('/fonts/NotoSans-Bold.ttf') format('opentype');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Noto Sans'), local('NotoSans'), url('/fonts/NotoSans-BoldItalic.ttf') format('opentype');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Noto Sans'), local('NotoSans'), url('/fonts/NotoSans-Regular.ttf') format('opentype');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Noto Sans'), local('NotoSans'), url('/fonts/NotoSans-Italic.ttf') format('opentype');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Ubuntu'), local('Ubuntu-Regular'), url('/fonts/Ubuntu-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('JetBrains Mono'), local('JetbrainsMono-Regular'), url('/fonts/JetbrainsMono-Regular.ttf') format('opentype');
+}

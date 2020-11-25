@@ -1,0 +1,164 @@
+#content * {
+  font-weight: 300;
+}
+
+#content *:not(code *) {
+  font-family: 'Noto Sans', sans-serif !important;
+}
+
+#content > * {
+  flex-shrink: 0;
+}
+
+#content ul {
+  list-style: disc !important;
+}
+
+#content h1,
+#content h2,
+#content h3
+{
+  margin-top: 2.5rem;
+  color: black;
+  line-height: 1.3;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#content p,
+#content ul,
+#content .code,
+#content .table
+{
+  margin-top: 1rem;
+}
+
+#content .code {
+  margin-bottom: -1rem;
+}
+
+#content li {
+  margin-top: .3rem;
+}
+
+#content h1 {
+  font-size: 1.9em;
+}
+
+#content h2 {
+  font-size: 1.5em;
+}
+
+#content h3 {
+  font-size: 1.2em;
+}
+
+#content p,
+#content li,
+#content span
+{
+  line-height: 1.25em;
+  text-align: justify;
+}
+
+#content li {
+  line-height: 1.3;
+}
+
+#content strong, #content b {
+  font-weight: 700;
+}
+
+#content ul {
+  padding-left: 1rem;
+  padding-right: 0;
+}
+
+#content a {
+  text-decoration-line: underline;
+  text-decoration-color: #6C6EE5;
+  font-weight: 500;
+  color: #323433;
+}
+
+#content code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  background: transparent;
+  color: whitesmoke;
+}
+
+#content p code, #content li code {
+  background-color: #e5e6e6;
+  padding: .3rem .5rem;
+  line-height: 1.6;
+  border-radius: .3rem;
+  color: #191a1a;
+}
+
+#content pre {
+  background: transparent;
+}
+
+#content pre pre {
+  display: block;
+  width: 100%;
+  margin: 0;
+  overflow-x: auto;
+  padding: .75rem;
+  border-radius: .5rem;
+  background-color: #1c1d21;
+  color: whitesmoke;
+}
+
+#content .show-block .show-showcase > *:not(.show-navbar) {
+  margin: 0;
+}
+
+#content .show-block .show-code .code {
+  margin: 0;
+}
+#content .show-block .show-code pre pre {
+  border-radius: 0 0 1rem 1rem;
+  border: 1px solid #b1b4b3;
+  border-top: none;
+  padding-bottom: 1rem;
+}
+
+
+#content .table {
+  overflow-x: auto;
+  border: 1px solid #b1b4b3;
+  border-radius: .5rem;
+}
+
+#content table {
+  border-radius: 1rem;
+  border-spacing: 0;
+  min-width: 100%;
+}
+
+#content table tbody tr:nth-child(odd) {
+  background: #e5e6e6;
+}
+
+#content table tbody tr td, #content table thead tr th {
+  min-width: 105px;
+  max-width: 50%;
+  padding: .75rem;
+}
+#content table thead tr th:last-child {
+  min-width: 200px;
+  width: 50%;
+}
+
+#content table thead tr th {
+  border-bottom: 1px solid #b1b4b3;
+}
+
+#content table code {
+  color: #191a1a;
+}
+
+#content dialog {
+  opacity: 1;
+}
