@@ -1,7 +1,9 @@
-const languages = ['rus', 'eng'];
-const pages = ['button', 'dropdown'];
+const languages = require('../common/languages');
+const components = require('../common/components');
 
-const dynamicRoutes = languages.map((lang) => pages.map((page) => `/docs/${lang}/${page}`)).flat();
+const dynamicRoutes = languages
+  .map((lang) => components.map((page) => `/docs/${lang}/${page}`))
+  .flat();
 
 module.exports = {
   pluginOptions: {
@@ -9,12 +11,16 @@ module.exports = {
       registry: undefined,
       renderRoutes: [
         '/',
-        '/about',
+        '/main',
         ...dynamicRoutes,
       ],
       useRenderEvent: true,
       headless: true,
       onlyProduction: true,
     },
+  },
+
+  devServer: {
+    port: process.env.PORT || 3000,
   },
 };

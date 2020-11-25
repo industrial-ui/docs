@@ -10,7 +10,7 @@
 
   export default Vue.extend({
     beforeRouteEnter (to, from, next) {
-      next({name: 'index'});
+      next({name: 'main'});
     },
   });
 </script>
