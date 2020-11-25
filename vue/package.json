@@ -1,32 +1,25 @@
 {
   "name": "industrial-ui-docs-vue",
   "scripts": {
-    "postinstall": "rm -rf public && cd ../layout && npm ci && npm run layout:build && mv __sapper__/export ../vue/public",
-    "dev": "vue-cli-service serve",
-    "export": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "postinstall": "sh build/postinstall.sh && node build/app-population.js",
+    "dev": "nuxt-ts",
+    "export": "nuxt-ts generate",
     "build": "npm run postinstall && npm run export"
   },
   "dependencies": {
+    "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "nuxt": "^2.14.6"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-airbnb": "^5.1.0",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "prerender-spa-plugin": "^3.2.1",
-    "typescript": "~3.9.3",
-    "vue-cli-plugin-prerender-spa": "~1.1.6",
-    "vue-template-compiler": "^2.6.11"
+    "@nuxt/types": "^2.14.6",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-config-typescript": "^3.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-plugin-nuxt": "^1.0.0"
   }
 }

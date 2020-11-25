@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1>{{ $route.params.lang }}</h1>
-    <router-view />
+    <button type="button">
+      {{ $route.params.page }}
+    </button>
   </div>
 </template>

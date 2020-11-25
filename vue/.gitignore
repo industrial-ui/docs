@@ -1,4 +1,7 @@
-.idea
+public
+static
+app.html
+.nuxt
 .vs-code
-/dist
-/public
+.idea
+dist
