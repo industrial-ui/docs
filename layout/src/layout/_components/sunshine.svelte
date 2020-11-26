@@ -1,18 +1,30 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
 
   let dark: boolean = false;
-  const change = (event: Event) => {
-    dark = (event.target as HTMLInputElement).checked;
-  };
+  onMount(() => dark = window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+  const change = (event: Event) => dark = (event.target as HTMLInputElement).checked;
+  $: {
+    if (typeof window !== 'undefined') {
+      if (dark) {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+      } else {
+        document.body.classList.add('light-theme');
+        document.body.classList.remove('dark-theme');
+      }
+    }
+  }
 </script>
 
 <label>
   <input type="checkbox" checked={dark} on:change={change}>
   {#if dark}
-    <i in:fade class="moon" />
-  {:else}
     <i in:fade class="sun" />
+  {:else}
+    <i in:fade class="moon" />
   {/if}
 </label>
 

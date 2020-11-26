@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://industrial-ui.com/">
   <meta property="og:title" content="Industrial-ui – styleless, pure functional UI components">
   <meta property="og:description" content="Production-oriented library with a feature rich UI components with no styles at all. Enjoy coding!">
-  <meta property="og:image" content="https://industrial-ui.com/img/logo.png">
+  <meta property="og:image" content="https://industrial-ui.com/logo-192.png">
 
   <link href="/style/landing-fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="/style/landing.css" >

@@ -1,2 +1,3 @@
-# docs
-Multilingual documentation for all Industial-ui supported frameworks
+# Industrial-ui documentation
+
+Micro-frontends based multilingual documentation for all Industial-ui supported frameworks.

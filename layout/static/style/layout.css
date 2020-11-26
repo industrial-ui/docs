@@ -3,6 +3,29 @@ body {
   overflow: hidden;
 }
 
+body.light-theme {
+  --bg-color: white;
+  --text-color-primary: black;
+}
+
+body.dark-theme {
+  --bg-color: black;
+  --text-color-primary: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg-color: black;
+    --text-color-primary: white;
+  }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    --bg-color: white;
+    --text-color-primary: black;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -35,6 +58,8 @@ a {
   display: flex;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: var(--bg-color);
+  transition: background-color .3s;
 }
 
 @media screen and (max-width: 1024px) {
