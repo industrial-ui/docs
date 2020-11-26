@@ -1,5 +1,5 @@
 <svelte:head>
-  <!--<meta name="color-scheme" content="dark light">-->
+  <meta name="color-scheme" content="dark light">
 
   <meta name="keywords" content="industrial-ui, iui, ui-kit, ui-components, library, design, logic, javascript, svelte, front-end, npm">
   <meta name="author" content="VanishMax">

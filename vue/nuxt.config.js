@@ -4,7 +4,7 @@ export default {
     title: 'Industrial-ui Vue',
   },
 
-  css: [],
+  css: ['./styles/docs.css'],
   plugins: [],
   components: false,
   modules: [],

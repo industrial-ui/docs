@@ -14,7 +14,6 @@
 
 <style>
   i {
-    transform: scale(1);
     transition: all .3s;
   }
 
@@ -27,8 +26,8 @@
     width: 20px;
     height: 2px;
     border-radius: 3px;
+    background-color: var(--text-color-primary);
     transition: all .3s;
-    background: black;
   }
 
   i::after,

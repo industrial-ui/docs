@@ -26,7 +26,6 @@
   text-transform: uppercase;
   font-size: .8em;
   color: var(--text-color-secondary);
-  transition: color .3s;
 }
 
 .nav ul {
@@ -38,11 +37,12 @@
 .nav li {
   height: 2em;
   color: var(--text-color-primary);
-  transition: color .3s;
 }
 
 .nav li:hover {
-  background: #dcddf9;
+  background: #bb33ff;
+  color: white;
+  transition: color 0s;
 }
 
 .nav li.active {
@@ -55,11 +55,6 @@
   display: block;
   font-size: 1em;
   text-transform: capitalize;
-}
-
-.nav a:not([target="_blank"]):hover {
-  font-size: 1.05em;
-  transition: all .1s;
 }
 
 .nav a[target="_blank"] {
@@ -100,7 +95,6 @@
     right: 100%;
     transition: right .3s;
     width: 50%;
-    background: #FBFBFB;
   }
 
   .nav.open {
