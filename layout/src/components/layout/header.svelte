@@ -1,6 +1,7 @@
 <script lang="ts">
   import Burger from './burger.svelte';
   import Sunshine from './sunshine.svelte';
+  import GitHub from '../github.svelte';
 
   export let open: boolean;
 </script>
@@ -16,7 +17,7 @@
 <div class="right">
   <Sunshine />
   <a href="https://github.com/industrial-ui" target="_blank" rel="noreferrer noopener">
-    <img src="/img/github.svg" alt="link to github repository" />
+    <GitHub />
   </a>
   <Burger bind:open={open} />
 </div>

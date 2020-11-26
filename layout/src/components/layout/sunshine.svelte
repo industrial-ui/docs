@@ -22,9 +22,9 @@
 <label>
   <input type="checkbox" checked={dark} on:change={change}>
   {#if dark}
-    <i in:fade class="sun" />
+    <i in:fade={{duration: 300}} class="sun" />
   {:else}
-    <i in:fade class="moon" />
+    <i in:fade={{duration: 300}} class="moon" />
   {/if}
 </label>
 
@@ -38,11 +38,14 @@
     display: none;
   }
 
+  i {
+    color: var(--text-color-primary);
+  }
+
   .sun {
     box-sizing: border-box;
     position: relative;
     display: block;
-    transform: scale(1);
     width: 24px;
     height: 24px;
     background:
@@ -91,11 +94,11 @@
   .moon {
     overflow: hidden;
     position: relative;
-    transform: rotate(-135deg) scale(1);
+    transform: rotate(-135deg);
     width: 20px;
     height: 20px;
     border: 2px solid;
-    border-bottom-color: transparent
+    border-bottom-color: transparent;
   }
   .moon::after {
     content: "";

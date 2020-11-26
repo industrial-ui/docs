@@ -1,9 +1,9 @@
 <script>
-  import Top from './_components/top.svelte';
-  import Svgs from './_components/svgs.svelte';
-  import Intro from './_components/intro.svelte';
-  import Steps from './_components/steps.svelte';
-  import Footer from './_components/footer.svelte';
+  import Top from '../components/landing/top.svelte';
+  import Svgs from '../components/landing/svgs.svelte';
+  import Intro from '../components/landing/intro.svelte';
+  import Steps from '../components/landing/steps.svelte';
+  import Footer from '../components/landing/footer.svelte';
 </script>
 
 <svelte:head>

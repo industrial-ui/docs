@@ -23,8 +23,8 @@
 </nav>
 
 <script lang="ts">
-  import Header from './_components/header.svelte';
-  import Nav from './_components/nav.svelte';
+  import Header from '../components/layout/header.svelte';
+  import Nav from '../components/layout/nav.svelte';
 
   let open: boolean = false;
 </script>

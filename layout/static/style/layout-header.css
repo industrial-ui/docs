@@ -6,8 +6,9 @@
   height: 3.7rem;
   padding: 0 2rem;
   border-bottom: 1px solid #EEEEEE;
-  background: white;
   z-index: 5;
+  background-color: var(--bg-color);
+  transition: background-color .3s;
 }
 
 .header .left {
@@ -18,7 +19,8 @@
 
 .header .logo {
   font-family: 'Ubuntu', sans-serif;
-  color: black;
+  color: var(--text-color-primary);
+  transition: color .3s;
 }
 
 .header .right {
@@ -27,10 +29,15 @@
   align-items: center;
 }
 
-.header .right img {
-  width: 2rem;
-  height: 2rem;
+.header .right svg {
+  width: 1.8rem;
+  height: 1.8rem;
 }
+.header .right svg path {
+  fill: var(--text-color-primary);
+  transition: fill .3s;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding: 0 0 0 1rem;
