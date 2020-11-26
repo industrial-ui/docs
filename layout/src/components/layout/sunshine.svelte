@@ -2,8 +2,12 @@
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
+  let loaded: boolean = false;
   let dark: boolean = false;
-  onMount(() => dark = window.matchMedia("(prefers-color-scheme: dark)").matches);
+  onMount(() => {
+    loaded = true;
+    dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   const change = (event: Event) => dark = (event.target as HTMLInputElement).checked;
   $: {
@@ -21,10 +25,12 @@
 
 <label>
   <input type="checkbox" checked={dark} on:change={change}>
-  {#if dark}
-    <i in:fade={{duration: 300}} class="sun" />
-  {:else}
-    <i in:fade={{duration: 300}} class="moon" />
+  {#if loaded}
+    {#if dark}
+      <i in:fade={{duration: 300}} class="sun" />
+    {:else}
+      <i in:fade={{duration: 300}} class="moon" />
+    {/if}
   {/if}
 </label>
 

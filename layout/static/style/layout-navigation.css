@@ -3,11 +3,14 @@
   top: 3.7rem;
   left: 0;
   bottom: 0;
-  background: rgba(220, 220, 220, .1);
   width: calc(100vw / 12 * 2);
   overflow-y: auto;
-  border-right: 1px solid #EEEEEE;
+  border-right-width: 1px;
+  border-right-style: solid;
   z-index: 4;
+  border-right-color: var(--border-color);
+  background-color: var(--bg-nav);
+  transition: background-color .3s, border-right-color .3s;
 }
 
 .nav > div {
@@ -21,8 +24,9 @@
 
 .nav header {
   text-transform: uppercase;
-  color: #555555;
   font-size: .8em;
+  color: var(--text-color-secondary);
+  transition: color .3s;
 }
 
 .nav ul {
@@ -33,6 +37,8 @@
 
 .nav li {
   height: 2em;
+  color: var(--text-color-primary);
+  transition: color .3s;
 }
 
 .nav li:hover {

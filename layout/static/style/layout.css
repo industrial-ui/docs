@@ -6,23 +6,38 @@ body {
 body.light-theme {
   --bg-color: white;
   --text-color-primary: black;
-}
-
-body.dark-theme {
-  --bg-color: black;
-  --text-color-primary: white;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    --bg-color: black;
-    --text-color-primary: white;
-  }
+  --text-color-secondary: black;
+  --border-color: #EEEEEE;
+  --bg-nav: #fcfcfc;
+  --bg-section: white;
 }
 @media (prefers-color-scheme: light) {
   body {
     --bg-color: white;
     --text-color-primary: black;
+    --text-color-secondary: black;
+    --border-color: #EEEEEE;
+    --bg-nav: #fcfcfc;
+    --bg-section: white;
+  }
+}
+
+body.dark-theme {
+  --text-color-primary: #EBEBEC;
+  --text-color-secondary: #BDC0C3;
+  --border-color: #1C2023;
+  --bg-color: #1C2023;
+  --bg-nav: #2A2D31;
+  --bg-section: #131314;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg-color: #1C2023;
+    --text-color-primary: #EBEBEC;
+    --text-color-secondary: #BDC0C3;
+    --border-color: #1C2023;
+    --bg-nav: #2A2D31;
+    --bg-section: #131314;
   }
 }
 
@@ -43,6 +58,8 @@ a {
   display: flex;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: var(--bg-section);
+  transition: background-color .3s;
 }
 
 @media screen and (max-width: 1024px) {
