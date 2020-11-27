@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Lang from './lang.svelte';
   import Burger from './burger.svelte';
   import Sunshine from './sunshine.svelte';
   import GitHub from '../github.svelte';
@@ -15,6 +16,7 @@
 </div>
 
 <div class="right">
+  <Lang />
   <Sunshine />
   <a href="https://github.com/industrial-ui" target="_blank" rel="noreferrer noopener">
     <GitHub />

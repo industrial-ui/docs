@@ -20,7 +20,6 @@
   i,
   i::after,
   i::before {
-    box-sizing: border-box;
     position: relative;
     display: block;
     width: 20px;

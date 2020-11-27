@@ -4,8 +4,6 @@
       <img src="/img/logo.png" alt="Industrial-ui logo" />
     </div>
     <h1>Industrial-ui Vue</h1>
-
-    <nuxt-link class="link" to="/eng/install">Get started</nuxt-link>
   </Layout>
 </template>
 
@@ -16,6 +14,10 @@
   export default Vue.extend({
     components: {
       Layout,
+    },
+    mounted () {
+      const lang = localStorage.getItem('iui-language') || 'eng';
+      this.$router.push(`/${lang}`);
     },
   });
 </script>
@@ -44,18 +46,5 @@
   .index-page h1 {
     color: var(--text-color-primary);
     transition: color .3s;
-  }
-
-  .index-page .link {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    padding: 0.75rem 1.5rem;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 0.5rem;
-    border-color: var(--text-color-primary);
-    color: var(--text-color-primary);
-    text-transform: uppercase;
-    transition: all .3s;
   }
 </style>

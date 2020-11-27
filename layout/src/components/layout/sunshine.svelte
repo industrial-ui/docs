@@ -38,6 +38,8 @@
   label {
     margin-right: 1rem;
     cursor: pointer;
+    width: 24px;
+    height: 24px;
   }
 
   input {
