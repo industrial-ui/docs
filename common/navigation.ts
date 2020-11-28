@@ -1,49 +1,55 @@
-interface SidebarNavigation {
-  name: string,
-  nested: RouteInNavigation[],
-}
-type RouteInNavigation = {
-  slug: string,
-  name: string,
-}
+import {SidebarNavigation} from './types';
 
 const navigation: SidebarNavigation[] = [
   {
-    name: 'Get started',
+    name: {
+      eng: 'Get started',
+      rus: 'Начало работы',
+    },
     nested: [
       {
         slug: 'install',
-        name: 'Installation',
+        name: {
+          eng: 'Installation',
+          rus: 'Установка',
+        },
       },
       {
         slug: 'config',
-        name: 'Configuration',
+        name: {
+          eng: 'Configuration',
+          rus: 'Конфигурация',
+        },
       },
     ],
   },
   {
-    name: 'Components',
+    name: {
+      eng: 'Components',
+      rus: 'Компоненты',
+    },
     nested: [
       {
-        slug: 'button',
-        name: 'Button',
-      },
-      {
         slug: 'dropdown',
-        name: 'Dropdown',
-      },
-      {
-        slug: 'modal',
-        name: 'Modal',
+        name: {
+          eng: 'Dropdown',
+          rus: 'Dropdown',
+        },
       },
     ],
   },
   {
-    name: 'Contributors',
+    name: {
+      eng: 'Contributors',
+      rus: 'Контрибуторам',
+    },
     nested: [
       {
         slug: 'doc-styling',
-        name: 'Documentation styling',
+        name: {
+          eng: 'Documentation styling',
+          rus: 'Стили документации',
+        },
       },
     ],
   }

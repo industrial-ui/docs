@@ -27,6 +27,7 @@
   import Header from '../components/layout/header.svelte';
   import Nav from '../components/layout/nav.svelte';
   import languages from 'common/languages';
+  import {subscribe} from 'common/dispatch';
 
   let open: boolean = false;
   let lang: string|null = null;
@@ -34,8 +35,7 @@
   onMount(() => {
     const {pathname} = location;
     lang = languages.find((lan) => pathname.includes(`/${lan}`)) || '';
-    window.addEventListener('iui-language', (e: CustomEvent) => {
-      const newLang = (e.detail as unknown as {lang: string}).lang;
+    subscribe('iui-language', (newLang) => {
       if (newLang !== lang) lang = newLang;
     });
   });

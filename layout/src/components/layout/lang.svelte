@@ -2,15 +2,13 @@
   import { fade } from 'svelte/transition';
   import languages from 'common/languages';
   import capitalize from 'common/capitalize';
+  import {dispatch} from 'common/dispatch';
 
   export let lang: string|null;
 
   const change = (e: Event) => {
     lang = (e.target as HTMLSelectElement).value;
-    window.dispatchEvent(new CustomEvent('iui-language', {
-      detail: { lang },
-    }));
-    localStorage.setItem('iui-language', lang);
+    dispatch('iui-language', lang, true);
   };
 </script>
 
