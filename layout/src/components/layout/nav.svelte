@@ -1,12 +1,17 @@
-<script>
+<script lang="ts">
   import {createEventDispatcher} from 'svelte';
-  import navigation from '../../../../common/navigation';
+  import navigation from 'common/navigation';
+  import Lang from './lang.svelte';
+
+  export let lang: string|null;
 
   const dispatch = createEventDispatcher();
 </script>
 
+<Lang bind:lang />
+
 {#each navigation as group}
-  <div>
+  <div class="route">
     <header>
       {group.name}
     </header>

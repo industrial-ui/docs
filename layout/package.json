@@ -15,10 +15,9 @@
     "dev": "run-p validate:dev layout:dev",
     "landing-dev": "run-p validate:dev landing:dev"
   },
-
   "dependencies": {
     "compression": "^1.7.4",
-    "polka": "next",
+    "polka": "^0.5.2",
     "sirv": "^1.0.7"
   },
   "devDependencies": {
@@ -27,6 +26,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.12.1",
+    "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",

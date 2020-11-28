@@ -5,6 +5,7 @@
   import GitHub from '../github.svelte';
 
   export let open: boolean;
+  export let lang: string|null;
 </script>
 
 <div class="left">
@@ -16,7 +17,8 @@
 </div>
 
 <div class="right">
-  <Lang />
+  <Lang bind:lang />
+
   <Sunshine />
   <a href="https://github.com/industrial-ui" target="_blank" rel="noreferrer noopener">
     <GitHub />

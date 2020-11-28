@@ -13,43 +13,48 @@
   transition: background-color .3s, border-right-color .3s;
 }
 
-.nav > div {
+.nav .lang-switch {
+  margin-left: 2rem;
   margin-top: 1rem;
 }
 
-.nav header, .nav a {
+.nav > .route {
+  margin-top: 1rem;
+}
+
+.nav .route header, .nav .route a {
   padding-left: 2rem;
   line-height: 2em;
 }
 
-.nav header {
+.nav .route header {
   text-transform: uppercase;
   font-size: .8em;
   color: var(--text-color-secondary);
 }
 
-.nav ul {
+.nav .route ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.nav li {
+.nav .route li {
   height: 2em;
   color: var(--text-color-primary);
 }
 
-.nav li:hover {
+.nav .route li:hover {
   background: #bb33ff;
   color: white;
   transition: color 0s;
 }
 
-.nav li.active {
+.nav .route li.active {
   color: #6C6EE5;
 }
 
-.nav a:not([target="_blank"]) {
+.nav .route a:not([target="_blank"]) {
   width: inherit;
   height: inherit;
   display: block;
@@ -57,7 +62,7 @@
   text-transform: capitalize;
 }
 
-.nav a[target="_blank"] {
+.nav .route a[target="_blank"] {
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
@@ -65,19 +70,23 @@
   align-items: center;
 }
 
-.nav a[target="_blank"] img {
+.nav .route a[target="_blank"] img {
   width: 1.75rem;
   height: 1.75rem;
 }
 
-.nav a[target="_blank"] span {
+.nav .route a[target="_blank"] span {
   margin-right: 0.75rem;
   font-size: 0.9em;
   font-style: italic;
 }
 
 @media screen and (min-width: 768px) {
-  .nav a[target="_blank"] {
+  .nav .route a[target="_blank"] {
+    display: none;
+  }
+
+  .nav .lang-switch {
     display: none;
   }
 }

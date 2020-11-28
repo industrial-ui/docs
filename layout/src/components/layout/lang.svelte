@@ -1,17 +1,9 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import {onMount} from 'svelte';
-  import languages from '../../../../common/languages';
-  import capitalize from '../../../../common/capitalize';
+  import languages from 'common/languages';
+  import capitalize from 'common/capitalize';
 
-  let loaded = false;
-  let lang = null;
-
-  onMount(() => {
-    loaded = true;
-    const {pathname} = location;
-    lang = languages.find((lan) => pathname.includes(`/${lan}`)) || null;
-  });
+  export let lang: string|null;
 
   const change = (e: Event) => {
     lang = (e.target as HTMLSelectElement).value;
@@ -22,8 +14,8 @@
   };
 </script>
 
-<div>
-  {#if loaded}
+<div class="lang-switch">
+  {#if lang !== null}
     <select in:fade={{duration: 300}} bind:value={lang} on:change={change}>
       {#each languages as lan}
         <option value={lan}>{capitalize(lan)}</option>

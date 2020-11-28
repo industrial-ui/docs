@@ -48,4 +48,8 @@
   .header a[target="_blank"] {
     display: none;
   }
+
+  .header .lang-switch {
+    display: none;
+  }
 }

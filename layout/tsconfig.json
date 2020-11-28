@@ -16,9 +16,14 @@
       "svelte"
     ]
   },
+  "rootDirs": [
+    "../common",
+    "."
+  ],
   "include": [
-     "src/**/*",
-     "src/node_modules/**/*"
+    "src/**/*",
+    "src/node_modules/**/*",
+    "../common/**/*.ts"
   ],
   "exclude": [
     "node_modules/*",

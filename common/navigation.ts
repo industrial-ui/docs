@@ -1,4 +1,13 @@
-export default [
+interface SidebarNavigation {
+  name: string,
+  nested: RouteInNavigation[],
+}
+type RouteInNavigation = {
+  slug: string,
+  name: string,
+}
+
+const navigation: SidebarNavigation[] = [
   {
     name: 'Get started',
     nested: [
@@ -28,5 +37,16 @@ export default [
         name: 'Modal',
       },
     ],
+  },
+  {
+    name: 'Contributors',
+    nested: [
+      {
+        slug: 'doc-styling',
+        name: 'Documentation styling',
+      },
+    ],
   }
-]
+];
+
+export default navigation;

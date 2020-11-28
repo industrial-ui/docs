@@ -1,10 +1,12 @@
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import path from 'path';
 import config from 'sapper/config/rollup';
 import pkg from './package.json';
 
@@ -33,6 +35,11 @@ export default {
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode),
 			}),
+      alias({
+        entries: [
+          { find: 'common', replacement: path.resolve(__dirname, '..', 'common/') },
+        ]
+      }),
 			svelte({
 				dev,
 				hydratable: true,
@@ -49,6 +56,7 @@ export default {
 			typescript({
 				noEmitOnError: !dev,
 				sourceMap: !!sourcemap,
+        include: ['**/*.ts', '../common/**/*.ts'],
 			}),
 
 			legacy && babel({
@@ -86,6 +94,11 @@ export default {
 				'process.env.NODE_ENV': JSON.stringify(mode),
 				'module.require': 'require',
 			}),
+      alias({
+        entries: [
+          { find: 'common', replacement: path.resolve(__dirname, '..', 'common/') },
+        ]
+      }),
 			svelte({
 				generate: 'ssr',
 				dev,
@@ -100,6 +113,7 @@ export default {
 			typescript({
 				noEmitOnError: !dev,
 				sourceMap: !!sourcemap,
+        include: ['**/*.ts', '../common/**/*.ts'],
 			}),
 		],
 		external: Object.keys(pkg.dependencies).concat(
