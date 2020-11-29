@@ -2,6 +2,7 @@
   "compilerOptions": {
     "lib": [
       "DOM",
+      "ES2015.Promise",
       "ES2017",
       "WebWorker"
     ],
@@ -12,6 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "strict": true,
+    "module": "esnext",
     "types": [
       "svelte"
     ]

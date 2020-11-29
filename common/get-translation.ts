@@ -2,6 +2,8 @@ import {LangTextNode, SupportedLanguages} from './types';
 import {LANGUAGE_EVENT} from './dispatch';
 
 const getTranslation = (textNode: LangTextNode, lang: SupportedLanguages|null = null): string => {
+  if (!textNode) return '';
+
   if (lang) return textNode[lang];
 
   if (typeof window === 'undefined') return '';

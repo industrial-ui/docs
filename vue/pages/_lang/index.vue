@@ -5,7 +5,7 @@
     </div>
     <h1>Industrial-ui Vue</h1>
 
-    <nuxt-link class="link" to="/eng/install">{{ t[lang] }}</nuxt-link>
+    <nuxt-link class="link" to="/index/install">{{ t[lang] }}</nuxt-link>
   </Layout>
 </template>
 

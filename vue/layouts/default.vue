@@ -10,7 +10,6 @@
     mounted () {
       // On initial load, send to the Layout micro-frontend the information about current language
       if (this.$route.params.lang) dispatch(LANGUAGE_EVENT, this.$route.params.lang);
-      console.log(this.$route.params.lang);
 
       // After, subscribe to the language change coming from the layout
       subscribe(LANGUAGE_EVENT, (lang) => {
