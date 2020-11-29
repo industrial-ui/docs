@@ -33,7 +33,7 @@ const navigation: SidebarNavigation[] = [
         slug: 'dropdown',
         name: {
           eng: 'Dropdown',
-          rus: 'Dropdown',
+          rus: 'Выпадающее меню',
         },
       },
     ],

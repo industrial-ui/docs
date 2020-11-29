@@ -1,3 +1,5 @@
+const path = require('path');
+
 export default {
   target: 'static',
   head: {
@@ -8,8 +10,8 @@ export default {
   plugins: [],
   components: false,
   modules: [],
-  build: {},
   buildModules: [
     '@nuxt/typescript-build'
   ],
+  build: {},
 }

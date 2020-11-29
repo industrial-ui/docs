@@ -8,15 +8,17 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Layout from '../components/Layout.vue'
+import Vue from 'vue';
+import Layout from '../components/Layout.vue';
+import {dispatch, LANGUAGE_EVENT} from '../../common/dispatch';
 
-  export default Vue.extend({
+export default Vue.extend({
     components: {
       Layout,
     },
     mounted () {
-      const lang = localStorage.getItem('iui-language') || 'eng';
+      const lang = localStorage.getItem(LANGUAGE_EVENT) || 'eng';
+      dispatch(LANGUAGE_EVENT, lang);
       this.$router.push(`/${lang}`);
     },
   });
