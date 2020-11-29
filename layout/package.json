@@ -1,17 +1,13 @@
 {
   "name": "industrial-ui-docs-layout",
   "description": "Multilingual documentation for all Industial-ui supported frameworks",
-
   "scripts": {
     "validate": "svelte-check --ignore src/node_modules/@sapper",
     "validate:dev": "svelte-check --ignore src/node_modules/@sapper --watch",
-
     "landing:dev": "sapper dev --routes src/landing",
     "landing:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/landing",
-
     "layout:dev": "sapper dev --routes src/layout",
     "layout:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/layout",
-
     "dev": "run-p validate:dev layout:dev",
     "landing-dev": "run-p validate:dev landing:dev"
   },
@@ -26,6 +22,11 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.12.1",
+    "@editorjs/code": "^2.6.0",
+    "@editorjs/editorjs": "^2.19.0",
+    "@editorjs/header": "^2.6.1",
+    "@editorjs/list": "^1.6.1",
+    "@editorjs/simple-image": "^1.4.0",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^15.1.0",
