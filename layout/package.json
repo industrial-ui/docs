@@ -6,6 +6,8 @@
     "validate:dev": "svelte-check --ignore src/node_modules/@sapper --watch",
     "landing:dev": "sapper dev --routes src/landing",
     "landing:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/landing",
+    "editor:dev": "sapper dev --routes src/editor",
+    "editor:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/editor",
     "layout:dev": "sapper dev --routes src/layout",
     "layout:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/layout",
     "dev": "run-p validate:dev layout:dev",

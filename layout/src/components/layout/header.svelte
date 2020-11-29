@@ -8,6 +8,8 @@
 
   export let open: boolean;
   export let lang: SupportedLanguages|''|null;
+  export let hasNav: boolean = true;
+  export let hasLang: boolean = true;
 
   const clickLink = (e: Event) => {
     e.preventDefault();
@@ -24,11 +26,16 @@
 </div>
 
 <div class="right">
-  <Lang bind:lang />
+  {#if hasLang}
+    <Lang bind:lang />
+  {/if}
 
   <Sunshine />
   <a href="https://github.com/industrial-ui" target="_blank" rel="noreferrer noopener">
     <GitHub />
   </a>
-  <Burger bind:open={open} />
+
+  {#if hasNav}
+    <Burger bind:open={open} />
+  {/if}
 </div>

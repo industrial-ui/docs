@@ -1,38 +1,19 @@
 <script lang="ts">
   import {onMount} from 'svelte';
   import { fade } from 'svelte/transition';
+  import createEditor from '../components/editor/create-editor';
 
   let overlay: boolean = false;
   let loadingMain = true;
   let editorMain = null;
 
   onMount(async () => {
-    const EditorJS = (await import ('@editorjs/editorjs')).default;
-    const Header = (await import ('@editorjs/header')).default;
-    const SimpleImage = (await import ('@editorjs/simple-image')).default;
-    const Code = (await import ('@editorjs/code')).default;
-    const List = (await import ('@editorjs/list')).default;
-
-    editorMain = new EditorJS({
+    editorMain = await createEditor({
       holder: 'editor-main',
       data: {},
       autofocus: true,
-      placeholder: 'Start writing the article here',
-      tools: {
-        header: Header,
-        list: List,
-        code: Code,
-        image: {
-          class: SimpleImage,
-          inlineToolbar: true,
-          config: {
-            placeholder: 'Paste image URL'
-          }
-        },
-      },
-      onReady: () => {
-        loadingMain = false;
-      },
+      placeholder: '',
+      onReady: () => loadingMain = false,
     });
   });
 
@@ -55,38 +36,17 @@
 
     loadingTranslation = true;
     translating = true;
-
-    const EditorJS = (await import ('@editorjs/editorjs')).default;
-    const Header = (await import ('@editorjs/header')).default;
-    const SimpleImage = (await import ('@editorjs/simple-image')).default;
-    const Code = (await import ('@editorjs/code')).default;
-    const List = (await import ('@editorjs/list')).default;
-
-    editorTranslation = new EditorJS({
+    editorTranslation = createEditor({
       holder: 'editor-translate',
       data: {},
       autofocus: true,
       placeholder: 'Start writing the article here',
-      tools: {
-        header: Header,
-        list: List,
-        code: Code,
-        image: {
-          class: SimpleImage,
-          inlineToolbar: true,
-          config: {
-            placeholder: 'Paste image URL'
-          }
-        },
-      },
-      onReady: () => {
-        loadingTranslation = false;
-      },
+      onReady: () => loadingTranslation = false,
     });
   };
 </script>
 
-<div class="main-section">
+<div id="editor">
   <div class="left" class:open={translating}>
     {#if loadingTranslation}
       <p class="loading">
@@ -116,10 +76,10 @@
 </div>
 
 <style>
-  .main-section {
+  #editor {
     z-index: 3;
-    display: flex;
-    flex-direction: row;
+    height: calc(100% - 3.7rem);
+    padding: 1.5rem 1rem;
     color: var(--text-color-primary);
     transition: color .3s;
   }
