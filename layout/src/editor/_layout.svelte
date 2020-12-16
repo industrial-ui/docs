@@ -8,9 +8,11 @@
   <meta property="og:url" content="https://industrial-ui.com/">
   <meta property="og:image" content="https://industrial-ui.com/logo-192.png">
 
+  <link type="text/css" rel="stylesheet" href="/style/variables.css" />
   <link type="text/css" rel="stylesheet" href="/style/fonts.css" />
   <link type="text/css" rel="stylesheet" href="/style/layout.css" />
   <link type="text/css" rel="stylesheet" href="/style/layout-header.css" />
+  <link type="text/css" rel="stylesheet" href="/style/editor.css" />
   <title>Docs Editor | Industrial-ui</title>
 </svelte:head>
 

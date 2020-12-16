@@ -1,0 +1,100 @@
+#editor .ce-toolbar__plus {
+  left: -30px;
+}
+
+#editor .ce-toolbar__settings-btn {
+  background-color: var(--bg-nav);
+  transition: background-color .3s;
+}
+
+#editor .ce-settings__button:hover,
+#editor .ce-toolbox__button:hover,
+#editor .cdx-settings-button:hover {
+  background-color: var(--bg-color-hover);
+}
+#editor .ce-settings__button svg,
+#editor .ce-toolbox__button svg,
+#editor .cdx-settings-button svg {
+  fill: var(--text-color-primary);
+}
+#editor .ce-settings__button:hover svg,
+#editor .ce-toolbox__button:hover svg,
+#editor .cdx-settings-button:hover svg {
+  fill: white;
+}
+#editor .cdx-settings-button--active svg,
+#editor .ce-toolbox__button--active svg {
+  fill: var(--bg-color-hover);
+}
+#editor .ce-settings__button--focused svg {
+  fill: var(--text-color-primary) !important;
+}
+
+#editor .ce-block--selected > .ce-block__content {
+  background-color: var(--bg-nav);
+  transition: background-color .3s;
+}
+
+#editor .ce-toolbar__settings-btn
+{
+  background-color: var(--bg-nav);
+  transition: background-color .3s;
+}
+
+#editor .ce-toolbar__settings-btn svg {
+  fill: var(--text-color-secondary);
+}
+
+#editor .ce-toolbox,
+#editor .ce-conversion-toolbar,
+#editor .ce-inline-toolbar,
+#editor .ce-settings
+{
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  background-color: var(--bg-nav);
+  border-color: var(--border-color);
+  transition: background-color .3s;
+}
+#editor .ce-conversion-tool:hover {
+  background-color: var(--bg-color-hover);
+}
+
+#editor .ce-inline-toolbar__dropdown svg {
+  fill: var(--text-color-primary);
+  transition: fill .3s;
+}
+
+#editor .ce-inline-toolbar .ce-inline-tool:hover,
+#editor .ce-inline-toolbar .ce-inline-toolbar__dropdown:hover {
+  background-color: var(--bg-color-hover);
+  transition: background-color .3s;
+}
+
+#editor .ce-inline-toolbar .ce-inline-tool svg {
+  fill: var(--text-color-primary);
+}
+#editor .ce-inline-toolbar .ce-inline-tool:hover svg {
+  fill: white;
+}
+
+#editor .ce-conversion-tool__icon svg {
+  fill: black;
+}
+
+@media (max-width: 650px) {
+  #editor .ce-toolbar {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  #editor .ce-toolbar__content {
+    width: 100%;
+    max-width: unset;
+  }
+
+  #editor .ce-toolbar__actions {
+    right: 0;
+  }
+}

@@ -64,7 +64,7 @@
   </div>
 
   <div class="toolbar">
-    <button type="button" on:click={translate}>{translating ? 'Finish translation' : 'Translate'}</button>
+    <button class="translate-button" type="button" on:click={translate}>{translating ? 'Finish translation' : 'Translate'}</button>
     <button type="button" on:click={save}>{saved ? 'Saved' : 'Save'}</button>
   </div>
 
@@ -112,6 +112,9 @@
     position: absolute;
     top: 0;
     right: 0;
+    border: 1px solid;
+    border-top: none;
+    border-color: var(--border-color);
     background-color: var(--bg-nav);
     transition: background-color .3s;
   }
@@ -119,10 +122,15 @@
   .toolbar button {
     border: none;
     padding: 0.75rem 1rem;
-    background: transparent;
+    background-color: transparent;
     cursor: pointer;
     color: var(--text-color-secondary);
     transition: color .3s;
+  }
+
+  .toolbar button:hover {
+    background-color: var(--bg-color-hover);
+    color: white;
   }
 
   .overlay {
@@ -134,8 +142,14 @@
     background-color: green;
   }
 
-  :global(#editor .ce-toolbar__plus) {
-    left: -30px;
+  @media screen and (max-width: 1024px) {
+    .toolbar .translate-button, .left {
+      display: none;
+    }
+    .right {
+      width: 100%;
+      padding: 1.5rem 0;
+    }
   }
 
   @media screen and (min-width: 768px) {
