@@ -10,14 +10,13 @@
   onMount(async () => {
     editorMain = await createEditor({
       holder: 'editor-main',
-      data: {},
       autofocus: true,
       placeholder: '',
       onReady: () => loadingMain = false,
     });
   });
 
-  let saved = null;
+  let saved: number|null = null;
   const save = () => {
     editorMain.save().then((data) => {
       if (navigator.clipboard) navigator.clipboard.writeText(JSON.stringify(data, null, 2));
@@ -38,7 +37,6 @@
     translating = true;
     editorTranslation = createEditor({
       holder: 'editor-translate',
-      data: {},
       autofocus: true,
       placeholder: 'Start writing the article here',
       onReady: () => loadingTranslation = false,
@@ -92,7 +90,7 @@
     margin: 0 auto;
   }
   .left, .right {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 3rem;
   }
   .loading {
     color: var(--text-color-secondary);
@@ -134,6 +132,10 @@
     width: 100%;
     height: 100%;
     background-color: green;
+  }
+
+  :global(#editor .ce-toolbar__plus) {
+    left: -30px;
   }
 
   @media screen and (min-width: 768px) {

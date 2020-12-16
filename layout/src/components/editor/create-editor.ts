@@ -1,6 +1,5 @@
-const createEditor = async ({data}: {
+const createEditor = async (data: {
   holder: string,
-  data: Record<string, any>,
   autofocus: boolean,
   placeholder: string,
   onReady: () => void,

@@ -11,7 +11,8 @@
     "layout:dev": "sapper dev --routes src/layout",
     "layout:build": "cross-env NODE_ENV=production sapper export --legacy --routes src/layout",
     "dev": "run-p validate:dev layout:dev",
-    "landing-dev": "run-p validate:dev landing:dev"
+    "landing-dev": "run-p validate:dev landing:dev",
+    "editor-dev": "run-p validate:dev editor:dev"
   },
   "dependencies": {
     "compression": "^1.7.4",
