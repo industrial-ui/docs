@@ -14,6 +14,21 @@
       placeholder: '',
       onReady: () => loadingMain = false,
     });
+
+    window.addEventListener('paste', (event) => {
+      const textFromPaste = event.clipboardData.getData('text/plain');
+      try {
+        // Means the editor.js content was passed
+        const data = JSON.parse(textFromPaste);
+        if (data && data.blocks && data.version && data.time) {
+          event.preventDefault();
+          const closestEditor = (event && event.target.closest('#editor-translate')) ? editorTranslation : editorMain;
+          closestEditor.render(data);
+        }
+      } catch (_) {
+        console.warn('Paste unsuccessful with content:', textFromPaste.substring(0, 64) + '...');
+      }
+    });
   });
 
   let saved: number|null = null;
@@ -28,19 +43,22 @@
   let loadingTranslation: boolean = false;
   let editorTranslation = null;
   const translate = async () => {
+    editorMain.readOnly.toggle();
     if (translating) {
       translating = false;
       return;
     }
 
-    loadingTranslation = true;
     translating = true;
-    editorTranslation = createEditor({
-      holder: 'editor-translate',
-      autofocus: true,
-      placeholder: 'Start writing the article here',
-      onReady: () => loadingTranslation = false,
-    });
+    if (!editorTranslation) {
+      loadingTranslation = true;
+      editorTranslation = createEditor({
+        holder: 'editor-translate',
+        autofocus: true,
+        placeholder: 'Start writing the article here',
+        onReady: () => loadingTranslation = false,
+      });
+    }
   };
 </script>
 
@@ -64,7 +82,7 @@
   </div>
 
   <div class="toolbar">
-    <button class="translate-button" type="button" on:click={translate}>{translating ? 'Finish translation' : 'Translate'}</button>
+    <button class="translate-button" type="button" on:click={translate}>{translating ? 'Close translation' : 'Translate'}</button>
     <button type="button" on:click={save}>{saved ? 'Saved' : 'Save'}</button>
   </div>
 
@@ -128,6 +146,9 @@
     transition: color .3s;
   }
 
+  .toolbar button:focus {
+    outline: none;
+  }
   .toolbar button:hover {
     background-color: var(--bg-color-hover);
     color: white;
