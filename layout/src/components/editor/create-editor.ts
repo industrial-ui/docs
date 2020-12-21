@@ -8,9 +8,10 @@ const createEditor = async (data: {
 
   const EditorJS = (await import ('@editorjs/editorjs')).default;
   const Header = (await import ('@editorjs/header')).default;
-  const SimpleImage = (await import ('@editorjs/simple-image')).default;
   const Code = (await import ('@editorjs/code')).default;
   const List = (await import ('@editorjs/list')).default;
+  // @ts-ignore
+  const Image = (await import ('../../components/editor/image-block')).default;
 
   return new EditorJS({
     ...data,
@@ -19,7 +20,7 @@ const createEditor = async (data: {
       list: List,
       code: Code,
       image: {
-        class: SimpleImage,
+        class: Image,
         inlineToolbar: true,
         config: {
           placeholder: 'Paste image URL'

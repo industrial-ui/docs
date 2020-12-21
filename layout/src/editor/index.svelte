@@ -14,7 +14,7 @@
     editorMain = await createEditor({
       holder: 'editor-main',
       autofocus: true,
-      placeholder: '',
+      placeholder: 'Start writing the article here...',
       onReady: () => loadingMain = false,
     });
 
