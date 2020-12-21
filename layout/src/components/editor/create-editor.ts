@@ -2,6 +2,7 @@ const createEditor = async (data: {
   holder: string,
   autofocus: boolean,
   placeholder: string,
+  data?: any,
   onReady: () => void,
 }) => {
   if (typeof window === 'undefined') return null;

@@ -129,4 +129,8 @@ export default class SimpleImage {
         break;
     }
   }
+
+  static get isReadOnlySupported() {
+    return true;
+  }
 }

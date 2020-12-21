@@ -2,6 +2,7 @@
   import {onMount} from 'svelte';
   import createEditor from '../components/editor/create-editor';
   import RulesOverlay from '../components/editor/rules-overlay.svelte';
+  import {editorOutputToProxy, editorProxyToInput} from '../components/editor/editor-output';
 
   let overlay: boolean = false;
   let loadingMain = true;
@@ -37,7 +38,8 @@
   let saved: number|null = null;
   const save = () => {
     editorMain.save().then((data) => {
-      if (navigator.clipboard) navigator.clipboard.writeText(JSON.stringify(data, null, 2));
+      console.log('saved', editorOutputToProxy(data));
+      if (navigator.clipboard) navigator.clipboard.writeText(JSON.stringify(editorOutputToProxy(data), null, 2));
       saved = setTimeout(() => saved = null, 3000);
     });
   };
@@ -46,20 +48,25 @@
   let loadingTranslation: boolean = false;
   let editorTranslation = null;
   const translate = async () => {
-    editorMain.readOnly.toggle();
     if (translating) {
       translating = false;
+      editorMain.readOnly.toggle();
       return;
     }
 
     translating = true;
     if (!editorTranslation) {
-      loadingTranslation = true;
-      editorTranslation = createEditor({
-        holder: 'editor-translate',
-        autofocus: true,
-        placeholder: 'Start writing the article here',
-        onReady: () => loadingTranslation = false,
+      editorMain.save().then((data) => {
+        loadingTranslation = true;
+        editorTranslation = createEditor({
+          holder: 'editor-translate',
+          autofocus: true,
+          data,
+          placeholder: 'Start writing the article here',
+          onReady: () => loadingTranslation = false,
+        });
+
+        editorMain.readOnly.toggle();
       });
     }
   };
