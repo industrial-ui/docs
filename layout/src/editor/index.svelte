@@ -1,13 +1,16 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import { fade } from 'svelte/transition';
   import createEditor from '../components/editor/create-editor';
+  import RulesOverlay from '../components/editor/rules-overlay.svelte';
 
   let overlay: boolean = false;
   let loadingMain = true;
   let editorMain = null;
 
   onMount(async () => {
+    const rulesRead = localStorage.getItem('iui-editor-rules');
+    overlay = !rulesRead;
+
     editorMain = await createEditor({
       holder: 'editor-main',
       autofocus: true,
@@ -62,7 +65,7 @@
   };
 </script>
 
-<div id="editor">
+<div id="editor" class:overlay-open={overlay}>
   <div class="left" class:open={translating}>
     {#if loadingTranslation}
       <p class="loading">
@@ -84,11 +87,10 @@
   <div class="toolbar">
     <button class="translate-button" type="button" on:click={translate}>{translating ? 'Close translation' : 'Translate'}</button>
     <button type="button" on:click={save}>{saved ? 'Saved' : 'Save'}</button>
+    <button type="button" on:click={() => overlay = true}>?</button>
   </div>
 
-  {#if overlay}
-    <div class="overlay" transition:fade={{duration: 300}}></div>
-  {/if}
+  <RulesOverlay bind:overlay />
 </div>
 
 <style>
@@ -99,6 +101,11 @@
     color: var(--text-color-primary);
     transition: color .3s;
   }
+
+  #editor.overlay-open {
+    overflow-y: hidden;
+  }
+
   .left {
     display: none;
     width: 50%;
@@ -152,15 +159,6 @@
   .toolbar button:hover {
     background-color: var(--bg-color-hover);
     color: white;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: green;
   }
 
   @media screen and (max-width: 1024px) {
