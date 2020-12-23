@@ -4,13 +4,16 @@
   import RulesOverlay from '../components/editor/rules-overlay.svelte';
   import {editorOutputToProxy, editorProxyToInput} from '../components/editor/editor-output';
   import type {OutputData} from '@editorjs/editorjs';
+  import languages from '../../../common/languages';
 
   let overlay: boolean = false;
   let editorMain = null;
   let editorTranslation = null;
   let loadingMain = true;
   let loadingTranslation: boolean = false;
+  let translateDd: boolean = false;
   let translating: boolean = false;
+  let translatingLang: string = '';
   let saved: number|null = null;
   let lastSavedData: OutputData|null = null;
 
@@ -33,9 +36,9 @@
         if (data && data.blocks && data.version && data.time) {
           event.preventDefault();
           if (translating) {
-            (await editorTranslation as any).render(editorProxyToInput(data, 'ru'));
+            (await editorTranslation as any).render(editorProxyToInput(data, translatingLang));
           } else {
-            (await editorMain as any).render(editorProxyToInput(data, 'ru'));
+            (await editorMain as any).render(editorProxyToInput(data, 'default'));
           }
         }
       } catch (_) {
@@ -45,7 +48,7 @@
   });
 
   const save = async () => {
-    if (!translating) {
+    if (!translatingLang) {
       const data = await editorMain.save();
       if (navigator.clipboard) await navigator.clipboard.writeText(
         JSON.stringify(editorOutputToProxy(data), null, 2)
@@ -54,19 +57,24 @@
     } else {
       const data = await (await editorTranslation).save();
       if (navigator.clipboard) await navigator.clipboard.writeText(
-        JSON.stringify(editorOutputToProxy(lastSavedData, {lang: 'ru', translation: data}), null, 2)
+        JSON.stringify(editorOutputToProxy(lastSavedData, {lang: translatingLang, translation: data}), null, 2)
       );
       saved = setTimeout(() => saved = null, 3000);
     }
   };
 
-  const translate = async () => {
+  const translateDdToggle = () => {
+    translateDd = !translateDd;
+  };
+
+  const translate = async (lang: string = '') => {
     if (translating) {
       translating = false;
       editorMain.readOnly.toggle();
       return;
     }
 
+    translatingLang = lang;
     translating = true;
     if (!editorTranslation) {
       const data = await editorMain.save();
@@ -106,7 +114,38 @@
   </div>
 
   <div class="toolbar">
-    <button class="translate-button" type="button" on:click={translate}>{translating ? 'Close translation' : 'Translate'}</button>
+    {#if translating}
+      <button class="translate-button" type="button" on:click={translate}>
+        Close translation
+      </button>
+    {:else if translatingLang}
+      <button class="translate-button" type="button" on:click={translate}>
+        Open translation
+      </button>
+    {:else}
+      <div class="dd">
+        <button class="translate-button" type="button" on:click={translateDdToggle}>
+          Translate
+        </button>
+        {#if translateDd}
+          <div>
+            <ul>
+              {#each languages as lang}
+                <li on:click={() => translate(lang)}>{lang}</li>
+              {/each}
+              <li class="inp">
+                <input
+                  placeholder="new"
+                  type="text"
+                  maxlength="3"
+                  on:keypress={e => e.key === 'Enter' ? translate(e.target.value) : null}
+                />
+              </li>
+            </ul>
+          </div>
+        {/if}
+      </div>
+    {/if}
     <button type="button" on:click={save}>{saved ? 'Saved' : 'Save'}</button>
     <button type="button" on:click={() => overlay = true}>?</button>
   </div>
@@ -158,6 +197,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
     border: 1px solid;
     border-top: none;
     border-color: var(--border-color);
@@ -170,14 +210,54 @@
     padding: 0.75rem 1rem;
     background-color: transparent;
     cursor: pointer;
+    font-size: 14px;
     color: var(--text-color-secondary);
     transition: color .3s;
   }
 
-  .toolbar button:focus {
+  .toolbar .dd {
+    position: relative;
+  }
+
+  .toolbar .dd > div {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+  }
+
+  .toolbar .dd ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-color: var(--border-color);
+    background-color: var(--bg-nav);
+    transition: background-color .3s, border-color .3s;
+  }
+
+  .toolbar .dd li {
+    padding: .5rem 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .toolbar .dd li.inp {
+    padding: 0;
+  }
+  .toolbar .dd li.inp input {
+    text-align: center;
+    padding: .5rem 1rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  .toolbar button:focus, .toolbar .dd li:focus, .toolbar .dd input:focus {
     outline: none;
   }
-  .toolbar button:hover {
+
+  .toolbar button:hover, .toolbar .dd li:not(.inp):hover {
     background-color: var(--bg-color-hover);
     color: white;
   }
