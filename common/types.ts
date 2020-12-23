@@ -1,6 +1,8 @@
 export type SupportedLanguages = 'eng'|'rus';
 
-export type LangTextNode = Record<SupportedLanguages, string> & {default?: string}
+export interface LangTextNode extends Record<string, string> {
+  default: string,
+}
 
 export type SidebarNavigation = {
   name: LangTextNode,

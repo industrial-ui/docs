@@ -3,10 +3,16 @@
   import createEditor from '../components/editor/create-editor';
   import RulesOverlay from '../components/editor/rules-overlay.svelte';
   import {editorOutputToProxy, editorProxyToInput} from '../components/editor/editor-output';
+  import type {OutputData} from '@editorjs/editorjs';
 
   let overlay: boolean = false;
-  let loadingMain = true;
   let editorMain = null;
+  let editorTranslation = null;
+  let loadingMain = true;
+  let loadingTranslation: boolean = false;
+  let translating: boolean = false;
+  let saved: number|null = null;
+  let lastSavedData: OutputData|null = null;
 
   onMount(async () => {
     const rulesRead = localStorage.getItem('iui-editor-rules');
@@ -19,15 +25,18 @@
       onReady: () => loadingMain = false,
     });
 
-    window.addEventListener('paste', (event) => {
+    window.addEventListener('paste', async (event) => {
       const textFromPaste = event.clipboardData.getData('text/plain');
       try {
         // Means the editor.js content was passed
         const data = JSON.parse(textFromPaste);
         if (data && data.blocks && data.version && data.time) {
           event.preventDefault();
-          const closestEditor = (event && event.target.closest('#editor-translate')) ? editorTranslation : editorMain;
-          closestEditor.render(data);
+          if (translating) {
+            (await editorTranslation as any).render(editorProxyToInput(data, 'ru'));
+          } else {
+            (await editorMain as any).render(editorProxyToInput(data, 'ru'));
+          }
         }
       } catch (_) {
         console.warn('Paste unsuccessful with content:', textFromPaste.substring(0, 64) + '...');
@@ -35,18 +44,22 @@
     });
   });
 
-  let saved: number|null = null;
-  const save = () => {
-    editorMain.save().then((data) => {
-      console.log('saved', editorOutputToProxy(data));
-      if (navigator.clipboard) navigator.clipboard.writeText(JSON.stringify(editorOutputToProxy(data), null, 2));
+  const save = async () => {
+    if (!translating) {
+      const data = await editorMain.save();
+      if (navigator.clipboard) await navigator.clipboard.writeText(
+        JSON.stringify(editorOutputToProxy(data), null, 2)
+      );
       saved = setTimeout(() => saved = null, 3000);
-    });
+    } else {
+      const data = await (await editorTranslation).save();
+      if (navigator.clipboard) await navigator.clipboard.writeText(
+        JSON.stringify(editorOutputToProxy(lastSavedData, {lang: 'ru', translation: data}), null, 2)
+      );
+      saved = setTimeout(() => saved = null, 3000);
+    }
   };
 
-  let translating: boolean = false;
-  let loadingTranslation: boolean = false;
-  let editorTranslation = null;
   const translate = async () => {
     if (translating) {
       translating = false;
@@ -56,18 +69,19 @@
 
     translating = true;
     if (!editorTranslation) {
-      editorMain.save().then((data) => {
-        loadingTranslation = true;
-        editorTranslation = createEditor({
-          holder: 'editor-translate',
-          autofocus: true,
-          data,
-          placeholder: 'Start writing the article here',
-          onReady: () => loadingTranslation = false,
-        });
+      const data = await editorMain.save();
+      lastSavedData = data;
 
-        editorMain.readOnly.toggle();
+      loadingTranslation = true;
+      editorTranslation = createEditor({
+        holder: 'editor-translate',
+        autofocus: true,
+        data,
+        placeholder: 'Start writing the article here',
+        onReady: () => loadingTranslation = false,
       });
+
+      editorMain.readOnly.toggle();
     }
   };
 </script>
