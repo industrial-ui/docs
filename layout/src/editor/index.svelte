@@ -3,7 +3,7 @@
   import createEditor from '../components/editor/create-editor';
   import RulesOverlay from '../components/editor/rules-overlay.svelte';
   import {editorOutputToProxy, editorProxyToInput} from '../components/editor/editor-output';
-  import type {OutputData} from '@editorjs/editorjs';
+  import type {OutputBlockData, OutputData} from '@editorjs/editorjs';
   import languages from '../../../common/languages';
 
   let overlay: boolean = false;
@@ -55,7 +55,19 @@
       );
       saved = setTimeout(() => saved = null, 3000);
     } else {
-      const data = await (await editorTranslation).save();
+      const data: OutputData = await (await editorTranslation).save();
+
+      let errs: string[] = [];
+      if (data.blocks.length !== lastSavedData.blocks.length) errs.push('The amount of blocks in both editors has to be the same!');
+      lastSavedData.blocks.forEach((block, index) => {
+        const tblock: OutputBlockData|null = data.blocks.length > index ? data.blocks[index] : null;
+        if (tblock && block.type !== tblock.type) errs.push(`The type of the block number ${index+1} is "${block.type}", while in the translation it's "${tblock.type}".`);
+      });
+      if (errs.length) {
+        alert(errs.join('\n') + '\n\nFix before saving!');
+        return;
+      }
+
       if (navigator.clipboard) await navigator.clipboard.writeText(
         JSON.stringify(editorOutputToProxy(lastSavedData, {lang: translatingLang, translation: data}), null, 2)
       );
