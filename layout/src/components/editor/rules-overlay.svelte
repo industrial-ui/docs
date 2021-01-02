@@ -26,6 +26,24 @@
         The editor allows you to write the articles of any type. It supports text highlighting,
         adding the headers, links, images, code blocks and code showcases.
       </p>
+      <p>
+        When writing the article, you write it in the "default" language which is English.
+        Then, you can translate to any other language, but you can choose it only once.
+      </p>
+      <p>
+        Be careful! When translating, the amount of Editor blocks and their types
+        should be the same as in the default version!
+      </p>
+      <p>
+        If you want to translate the existing article, you can either take the default
+        translation from the docs repo and paste it to the editor with cmd/ctrl+V shortcut, or
+        go by the link ("Edit this article") from the article page in the docs.
+      </p>
+      <p>
+        Saving of the editor's output copies the article JSON representation to the clipboard. If
+        you want to publish it, go to the docs repo and put
+        <a href="https://github.com/industrial-ui/docs/tree/main/common/articles" target="_blank">the file there</a>.
+      </p>
 
       <button type="button" class="finish" on:click={close}>I have read the instructions</button>
     </section>
@@ -69,6 +87,12 @@
 
   section p {
     text-align: justify;
+    line-height: 120%;
+  }
+
+  section p a {
+    color: var(--bg-color-hover);
+    text-decoration: underline;
   }
 
   section button {
