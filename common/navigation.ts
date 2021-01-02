@@ -3,21 +3,21 @@ import {SidebarNavigation} from './types';
 const navigation: SidebarNavigation[] = [
   {
     name: {
-      eng: 'Get started',
+      default: 'Get started',
       rus: 'Начало работы',
     },
     nested: [
       {
         slug: 'install',
         name: {
-          eng: 'Installation',
+          default: 'Installation',
           rus: 'Установка',
         },
       },
       {
         slug: 'config',
         name: {
-          eng: 'Configuration',
+          default: 'Configuration',
           rus: 'Конфигурация',
         },
       },
@@ -25,14 +25,14 @@ const navigation: SidebarNavigation[] = [
   },
   {
     name: {
-      eng: 'Components',
+      default: 'Components',
       rus: 'Компоненты',
     },
     nested: [
       {
         slug: 'dropdown',
         name: {
-          eng: 'Dropdown',
+          default: 'Dropdown',
           rus: 'Выпадающее меню',
         },
       },
@@ -40,14 +40,14 @@ const navigation: SidebarNavigation[] = [
   },
   {
     name: {
-      eng: 'Contributors',
+      default: 'Contributors',
       rus: 'Контрибуторам',
     },
     nested: [
       {
         slug: 'doc-styling',
         name: {
-          eng: 'Documentation styling',
+          default: 'Documentation styling',
           rus: 'Стили документации',
         },
       },
