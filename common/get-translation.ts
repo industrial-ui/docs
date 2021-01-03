@@ -9,7 +9,7 @@ const getTranslation = (textNode: LangTextNode, lang: SupportedLanguages|null = 
   if (typeof window === 'undefined') return '';
 
   const currentLanguage = (sessionStorage.getItem(LANGUAGE_EVENT) as SupportedLanguages|null);
-  return currentLanguage ? textNode[currentLanguage] : textNode.default || '';
+  return textNode[currentLanguage || 'default'] || textNode.default || '';
 };
 
 export default getTranslation;

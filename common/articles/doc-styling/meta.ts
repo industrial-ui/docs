@@ -1,6 +1,8 @@
-const meta = {
+import {ArticleMetadata} from '../../types';
+
+const meta: ArticleMetadata = {
   title: {
-    eng: 'Documentation styling',
+    default: 'Documentation styling',
     rus: 'Стилизация документации',
   },
 };
