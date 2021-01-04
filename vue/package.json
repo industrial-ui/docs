@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "postinstall": "sh build/postinstall.sh",
-    "dev": "nuxt-ts",
+    "dev": "npm run postinstall && nuxt-ts",
     "export": "nuxt-ts generate",
     "build": "npm run postinstall && npm run export"
   },

@@ -154,7 +154,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
-          "code": ".container {\n  max-width: 1024px;\n  margin: 0 auto;\n}"
+          "code": "\n.container {\n  max-width: 1024px;\n  margin: 0 auto;\n}"
         }
       },
       {

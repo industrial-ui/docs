@@ -48,6 +48,10 @@ a {
   width: 100%;
 }
 
+.content-article {
+  padding: 1rem 2rem;
+}
+
 @media screen and (max-width: 1024px) {
   #app {
     left: 25%;
