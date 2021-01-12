@@ -25,6 +25,7 @@ const editorOutputToProxy = (data: OutputData, translation?: {lang: string, tran
       throw new Error('The data in the translation is corrupted. The editor blocks should go in the same order and be of the same type.');
     }
 
+    // Make manipulations that transform any string with text into the LangTextNode for each block type
     if (newBlock.type === 'paragraph' || newBlock.type === 'header') {
       newBlock.data.text = convertStringToLanguageObject(newBlock.data.text, translation?.lang, translationBlock?.data?.text);
     } else if (newBlock.type === 'list') {
@@ -34,6 +35,14 @@ const editorOutputToProxy = (data: OutputData, translation?: {lang: string, tran
       });
     } else if (newBlock.type === 'image') {
       newBlock.data.caption = convertStringToLanguageObject(newBlock.data.caption, translation?.lang, translationBlock?.data?.caption);
+    } else if (newBlock.type === 'table') {
+      newBlock.data.content = newBlock.data.content.map((items: string[], i: number) => {
+        const arrElem = translationBlock?.data?.content?.[i];
+        return items.map((elem, j) => {
+          const translateElem = arrElem?.[j];
+          return convertStringToLanguageObject(elem, translation?.lang, translateElem);
+        });
+      });
     }
     return newBlock;
   });
@@ -45,6 +54,7 @@ const editorOutputToProxy = (data: OutputData, translation?: {lang: string, tran
 };
 
 const editorProxyToInput = (data: OutputData, lang: string) => {
+  // Transform all the LangTextNodes by type to the strings of needed translation
   const blocks = data.blocks.map((block) => {
     if (block.type === 'paragraph' || block.type === 'header') {
       block.data.text = convertLanguageObjectToString(block.data.text, lang);
@@ -52,6 +62,10 @@ const editorProxyToInput = (data: OutputData, lang: string) => {
       block.data.items = block.data.items.map((obj: any) => convertLanguageObjectToString(obj, lang));
     } else if (block.type === 'image') {
       block.data.caption = convertLanguageObjectToString(block.data.caption, lang);
+    } else if (block.type === 'table') {
+      block.data.content = block.data.content.map((items: LangTextNode[]) => {
+        return items.map((elem) => convertLanguageObjectToString(elem, lang));
+      });
     }
     return block;
   });
