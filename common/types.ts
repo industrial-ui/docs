@@ -40,6 +40,9 @@ export interface ArticleType extends ArticleMetadata {
         // type === 'image'
         url?: string,
         caption?: LangTextNode,
+
+        // type === 'table'
+        content?: LangTextNode[][],
       }
     }[],
     version: string,

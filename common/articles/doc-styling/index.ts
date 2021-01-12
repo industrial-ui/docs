@@ -11,7 +11,7 @@ const article: ArticleType = {
         "data": {
           "text": {
             "default": "This is the example page that demonstrates how the documentation can be styled with the use of <a href=\"https://editor.industrial-ui.com/\">the editor</a>.",
-            "rus": "Эта статья демонстрирует как документация может быть стилизирована разными блоками <a href=\"https://editor.industrial-ui.com/\">редактора</a>."
+            "rus": "Эта статья демонстрирует как документация может быть стилизована разными блоками <a href=\"https://editor.industrial-ui.com/\">редактора</a>."
           }
         }
       },
@@ -174,6 +174,33 @@ const article: ArticleType = {
             "default": "The man, taken from <a href=\"https://unsplash.com/photos/_Zi8QeOr1gU\">Unsplash</a>",
             "rus": "Человек, изображение взято с&nbsp;<a href=\"https://unsplash.com/photos/_Zi8QeOr1gU\">Unsplash</a>"
           }
+        }
+      },
+      {
+        "type": "table",
+        "data": {
+          "content": [
+            [
+              {
+                "default": "Cell1 of Row1",
+                "rus": "Ячейка1 Строки1"
+              },
+              {
+                "default": "Cell2 of Row1",
+                "rus": "Ячейка2 Строки1"
+              }
+            ],
+            [
+              {
+                "default": "Cell1 of Row2",
+                "rus": "Ячейка1 Строки1"
+              },
+              {
+                "default": "Cell2 of Row2",
+                "rus": "Ячейка2 Строки2"
+              }
+            ]
+          ]
         }
       }
     ],
