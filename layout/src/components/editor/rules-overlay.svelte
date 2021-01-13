@@ -23,12 +23,31 @@
       <h1>Editor usage instructions</h1>
 
       <p>
-        The editor allows you to write the articles of any type. It supports text highlighting,
-        adding the headers, links, images, code blocks and code showcases.
+        The editor allows you to write the articles of any type. It supports the following features:
       </p>
+      <ul>
+        <li>
+          Text highlighting: making it bold, italic, bold italic or inline code.
+        </li>
+        <li>
+          Links that would be opened in the same browser tab.
+        </li>
+        <li>
+          Headers from 1st to 6th level, but the levels >3 are not recommended.
+        </li>
+        <li>
+          Image blocks with captions.
+        </li>
+        <li>
+          Tables. Keep in mind that the first row of the table will always be the header of the table.
+        </li>
+        <li>
+          Code blocks. By default, it will be highlighted as HTML.
+        </li>
+      </ul>
       <p>
         When writing the article, you write it in the "default" language which is English.
-        Then, you can translate to any other language, but you can choose it only once.
+        Then, you can translate to any other language, but choose it only once.
       </p>
       <p>
         Be careful! When translating, the amount of Editor blocks and their types
@@ -93,6 +112,10 @@
   section p a {
     color: var(--bg-color-hover);
     text-decoration: underline;
+  }
+
+  section ul li {
+    line-height: 140%;
   }
 
   section button {
