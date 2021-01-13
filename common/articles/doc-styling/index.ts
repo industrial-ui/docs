@@ -19,8 +19,8 @@ const article: ArticleType = {
         "type": "paragraph",
         "data": {
           "text": {
-            "default": "You look at the very simple paragraph block. It supports <i>italic</i>, <b>bold</b>, <b><i>italic bold</i></b> text and the links, as you could see above.",
-            "rus": "Вы смотрите на самый просто блок – абзац. Он поддерживает <i>курсив</i>, <b>жирный шрифт</b>, <b><i>текст жирным курсивом</i></b> и ссылки, которые показаны выше."
+            "default": "You look at the very simple paragraph block. It supports <i>italic</i>, <b>bold</b>, <b><i>italic bold</i></b> text, <code class=\"inline-code\">inline code</code> examples and the links, as you could see above.",
+            "rus": "Вы смотрите на самый просто блок – абзац. Он поддерживает <i>курсив</i>, <b>жирный шрифт</b>, <b><i>текст жирным курсивом</i></b>, <code class=\"inline-code\">примеры кода</code> и ссылки, которые показаны выше."
           }
         }
       },

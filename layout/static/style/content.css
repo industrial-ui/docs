@@ -85,12 +85,12 @@
   color: whitesmoke;
 }
 
-#content p code, #content li code {
-  background-color: #e5e6e6;
+#content .inline-code {
+  color: #f5503d;
+  letter-spacing: 0.4px;
+  background-color: #ebefef;
   padding: .3rem .5rem;
-  line-height: 1.6;
   border-radius: .3rem;
-  color: var(--text-color-primary);
 }
 
 #content pre {
@@ -119,39 +119,36 @@
 }
 
 
-/*#content .table {*/
-/*  overflow-x: auto;*/
-/*  border: 1px solid #b1b4b3;*/
-/*  border-radius: .5rem;*/
-/*}*/
+#content .table {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: .5rem;
+}
 
-/*#content table {*/
-/*  border-radius: 1rem;*/
-/*  border-spacing: 0;*/
-/*  min-width: 100%;*/
-/*}*/
+#content table {
+  border-radius: 1rem;
+  border-spacing: 0;
+  min-width: 100%;
+}
 
-/*#content table tbody tr:nth-child(odd) {*/
-/*  background: #e5e6e6;*/
-/*}*/
+#content table tbody tr:nth-child(even) {
+  background: var(--bg-nav);
+  transition: background-color .2s;
+}
 
-/*#content table tbody tr td, #content table thead tr th {*/
-/*  min-width: 105px;*/
-/*  max-width: 50%;*/
-/*  padding: .75rem;*/
-/*}*/
-/*#content table thead tr th:last-child {*/
-/*  min-width: 200px;*/
-/*  width: 50%;*/
-/*}*/
+#content table tbody tr td, #content table thead tr th {
+  min-width: 105px;
+  max-width: 50%;
+  padding: .75rem;
+}
+#content table thead tr th:last-child {
+  min-width: 200px;
+  width: 50%;
+}
 
-/*#content table thead tr th {*/
-/*  border-bottom: 1px solid #b1b4b3;*/
-/*}*/
-
-/*#content table code {*/
-/*  color: #191a1a;*/
-/*}*/
+#content table thead tr th {
+  border-bottom: 1px solid var(--border-color);
+}
 
 #content dialog {
   opacity: 1;

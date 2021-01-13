@@ -33,13 +33,20 @@
         </template>
 
         <template v-if="block.type === 'table'">
-          <table>
-            <tbody>
-              <tr v-for="(row, i) in block.data.content" :key="'row' + i">
+          <div class="table">
+            <table v-if="block.data.content && block.data.content.length > 1">
+              <thead>
+              <tr v-for="(row, i) in block.data.content.slice(0, 1)" :key="'row' + i">
+                <th v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="(row, i) in block.data.content.slice(1)" :key="'row' + i">
                 <td v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
               </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </template>
       </template>
     </div>
