@@ -5,6 +5,7 @@
   import {editorOutputToProxy, editorProxyToInput} from '../components/editor/editor-output';
   import type {OutputBlockData, OutputData} from '@editorjs/editorjs';
   import type {ArticleProxyType} from '../../../common/types';
+  import allArticles from '../../../common/articles';
 
   let overlay: boolean = false;
   let editorMain = null;
@@ -29,6 +30,18 @@
       placeholder: 'Start writing the article here...',
       onReady: () => loadingMain = false,
     });
+
+    await editorMain.isReady;
+    const queryParams = new URLSearchParams(window.location.search);
+    const articleParam = queryParams.get('article');
+    if (articleParam) {
+      const article = allArticles[articleParam];
+      if (article) {
+        const data = (await article());
+        const input = editorProxyToInput(data.default.article as OutputData, 'default');
+        editorMain.render(input);
+      }
+    }
 
     window.addEventListener('paste', async (event) => {
       const textFromPaste = event.clipboardData.getData('text/plain');
