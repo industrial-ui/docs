@@ -1,11 +1,16 @@
 import type {OutputData} from '@editorjs/editorjs';
-import {LangTextNode} from '../../../../common/types';
+import {
+  ArticleBlockType,
+  ArticleProxyType,
+  LangTextNode
+} from '../../../../common/types';
+import {uniqueArray} from '../../../../common/useful';
 
-const convertStringToLanguageObject = (defaultLang: string, translationLang?: string, translationText?: string) => {
-  const languageObject: LangTextNode = {
+const convertStringToLanguageObject = (defaultLang: string|LangTextNode, translationLang?: string, translationText?: string|LangTextNode) => {
+  const languageObject: LangTextNode = typeof defaultLang === 'object' ? defaultLang : {
     default: defaultLang,
   };
-  if (translationLang && translationText) languageObject[translationLang] = translationText;
+  if (translationLang && translationText) languageObject[translationLang] = typeof translationText === 'object' ? translationText[translationLang] : translationText;
 
   return languageObject;
 };
@@ -17,7 +22,7 @@ const convertLanguageObjectToString = (data: Record<string, string>, lang: strin
 /**
  * The function gets the EditorJS data output and transforms it into the multi-lingual article
  * */
-const editorOutputToProxy = (data: OutputData, translation?: {lang: string, translation: OutputData}) => {
+const editorOutputToProxy = (data: OutputData & {languages?: string[]}, translation?: {lang: string, translation: OutputData}): ArticleProxyType => {
   const blocks = data.blocks.map((block, index) => {
     let newBlock = {...block, data: {...block.data}};
     let translationBlock = translation ? translation.translation.blocks[index] : null;
@@ -44,11 +49,16 @@ const editorOutputToProxy = (data: OutputData, translation?: {lang: string, tran
         });
       });
     }
-    return newBlock;
+    return newBlock as ArticleBlockType;
   });
 
   return {
-    ...data,
+    time: data.time || Date.now(),
+    version: data.version || '',
+    languages: uniqueArray<string>([
+      ...(data.languages ? data.languages : []),
+      ...(translation?.lang ? [translation.lang] : [])
+    ]),
     blocks,
   };
 };

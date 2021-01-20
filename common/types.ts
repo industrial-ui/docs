@@ -19,32 +19,37 @@ export interface ArticleMetadata {
 }
 
 export interface ArticleType extends ArticleMetadata {
-  article: {
-    time: number,
-    blocks: {
-      type: string,
-      data: {
-        // type === 'paragraph'|'header'
-        text?: LangTextNode,
+  article: ArticleProxyType
+}
 
-        // type === 'header'
-        level?: number,
+export interface ArticleProxyType {
+  languages: string[], // The array of translated languages (instead of "default")
+  blocks: ArticleBlockType[],
+  time: number,
+  version: string,
+}
 
-        // type === 'list'
-        style?: 'ordered'|'unordered',
-        items?: LangTextNode[],
+export interface ArticleBlockType {
+  type: string,
+  data: {
+    // type === 'paragraph'|'header'
+    text?: LangTextNode,
 
-        // type === 'code'
-        code?: string,
+    // type === 'header'
+    level?: number,
 
-        // type === 'image'
-        url?: string,
-        caption?: LangTextNode,
+    // type === 'list'
+    style?: 'ordered'|'unordered',
+    items?: LangTextNode[],
 
-        // type === 'table'
-        content?: LangTextNode[][],
-      }
-    }[],
-    version: string,
+    // type === 'code'
+    code?: string,
+
+    // type === 'image'
+    url?: string,
+    caption?: LangTextNode,
+
+    // type === 'table'
+    content?: LangTextNode[][],
   }
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
   import languages from 'common/languages';
-  import capitalize from 'common/capitalize';
+  import {capitalize} from 'common/useful';
   import {dispatch} from 'common/dispatch';
 
   export let lang: string|null;

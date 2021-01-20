@@ -5,6 +5,7 @@ const article: ArticleType = {
   ...meta,
   article: {
     "time": 1609687585668,
+    "languages": ["rus"],
     "blocks": [
       {
         "type": "paragraph",
