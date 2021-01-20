@@ -1,68 +1,77 @@
 <template>
-  <article id="content">
-    <h1>
-      {{ article.title | tranlation }}
-    </h1>
-    <div v-if="article.article">
-      <template v-for="(block, i) in article.article.blocks">
-        <template v-if="block.type === 'paragraph'">
-          <p :key="i" v-html="getTranslation(block.data.text)" />
-        </template>
+  <Layout class="article-page">
+    <article id="content">
+      <h1>
+        {{ article.title | tranlation }}
+      </h1>
+      <div v-if="article.article">
+        <template v-for="(block, i) in article.article.blocks">
+          <template v-if="block.type === 'paragraph'">
+            <p :key="i" v-html="getTranslation(block.data.text)" />
+          </template>
 
-        <template v-if="block.type === 'header'">
-          <component :is="'h' + block.data.level" :key="i" v-html="getTranslation(block.data.text)" />
-        </template>
+          <template v-if="block.type === 'header'">
+            <component :is="'h' + block.data.level" :key="i" v-html="getTranslation(block.data.text)" />
+          </template>
 
-        <template v-if="block.type === 'list'">
-          <component :is="block.data.style === 'ordered' ? 'ol' : 'ul'" :key="i">
-            <li v-for="(item, j) in block.data.items" :key="j" v-html="getTranslation(item)" />
-          </component>
-        </template>
+          <template v-if="block.type === 'list'">
+            <component :is="block.data.style === 'ordered' ? 'ol' : 'ul'" :key="i">
+              <li v-for="(item, j) in block.data.items" :key="j" v-html="getTranslation(item)" />
+            </component>
+          </template>
 
-        <template v-if="block.type === 'code'">
+          <template v-if="block.type === 'code'">
           <pre class="code">
             <code v-html="block.data.code" />
           </pre>
-        </template>
+          </template>
 
-        <template v-if="block.type === 'image'">
-          <figure>
-            <img :src="block.data.url" alt="" />
-            <figcaption v-html="getTranslation(block.data.caption)" />
-          </figure>
-        </template>
+          <template v-if="block.type === 'image'">
+            <figure>
+              <img :src="block.data.url" alt="" />
+              <figcaption v-html="getTranslation(block.data.caption)" />
+            </figure>
+          </template>
 
-        <template v-if="block.type === 'table'">
-          <div class="table">
-            <table v-if="block.data.content && block.data.content.length > 1">
-              <thead>
-              <tr v-for="(row, i) in block.data.content.slice(0, 1)" :key="'row' + i">
-                <th v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="(row, i) in block.data.content.slice(1)" :key="'row' + i">
-                <td v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
-              </tr>
-              </tbody>
-            </table>
-          </div>
+          <template v-if="block.type === 'table'">
+            <div class="table">
+              <table v-if="block.data.content && block.data.content.length > 1">
+                <thead>
+                <tr v-for="(row, i) in block.data.content.slice(0, 1)" :key="'row' + i">
+                  <th v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(row, i) in block.data.content.slice(1)" :key="'row' + i">
+                  <td v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </template>
         </template>
-      </template>
-    </div>
-  </article>
+      </div>
+    </article>
+
+    <a :href="'https://editor.industrial-ui.com/?article=' + article.id" class="article-edit">
+      <i class="gg-pen" />
+      <span>Edit this article</span>
+    </a>
+  </Layout>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import type {SupportedLanguages} from '../../../common/types';
+  import type {ArticleType, SupportedLanguages} from '../../../common/types';
   import articles from '../../../common/articles';
   import getTranslation from '../../../common/get-translation';
+  import Layout from '~/components/Layout.vue';
 
   export default Vue.extend({
+    components: {Layout},
     data () {
       return {
-        article: {},
+        article: {} as ArticleType,
       };
     },
     computed: {
@@ -79,3 +88,61 @@
     },
   });
 </script>
+
+<style>
+  .article-page {
+    padding: 1rem 2rem 2rem;
+  }
+
+  .article-edit {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+  }
+
+  .article-edit span {
+    display: inline-block;
+    margin-left: 30px;
+    color: var(--text-color-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--bg-color-hover);
+  }
+
+  .gg-pen {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    transform: rotate(-45deg) scale(0.8) translateY(15px);
+    width: 14px;
+    height: 4px;
+    border-right: 2px solid transparent;
+    box-shadow: 0 0 0 2px, inset -2px 0 0;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+  }
+  .gg-pen::after,
+  .gg-pen::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute
+  }
+  .gg-pen::before {
+    background: var(--text-color-primary);
+    border-left: 0;
+    right: -6px;
+    width: 3px;
+    height: 4px;
+    border-radius: 1px;
+    top: 0
+  }
+  .gg-pen::after {
+    width: 8px;
+    height: 7px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 7px solid;
+    left: -11px;
+    top: -2px
+  }
+</style>

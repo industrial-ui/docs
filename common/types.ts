@@ -15,6 +15,7 @@ export type RouteInNavigation = {
 }
 
 export interface ArticleMetadata {
+  id: string,
   title: LangTextNode,
 }
 
