@@ -8,14 +8,14 @@ const navigation: SidebarNavigation[] = [
     },
     nested: [
       {
-        slug: 'install',
+        slug: 'installation',
         name: {
           default: 'Installation',
           rus: 'Установка',
         },
       },
       {
-        slug: 'config',
+        slug: 'configuration',
         name: {
           default: 'Configuration',
           rus: 'Конфигурация',

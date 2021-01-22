@@ -13,7 +13,6 @@
   <link type="text/css" rel="stylesheet" href="/style/layout.css" />
   <link type="text/css" rel="stylesheet" href="/style/layout-header.css" />
   <link type="text/css" rel="stylesheet" href="/style/layout-navigation.css" />
-  <link type="text/css" rel="stylesheet" href="/style/content.css" />
 </svelte:head>
 
 <header class="header">

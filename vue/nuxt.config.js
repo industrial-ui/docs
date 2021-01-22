@@ -12,7 +12,10 @@ export default {
     title: 'Industrial-ui Vue',
   },
 
-  css: ['./styles/docs.css'],
+  css: [
+    './styles/docs.css',
+    './styles/content.css',
+  ],
   plugins: ['./plugins/translation.ts'],
   components: false,
   modules: [],

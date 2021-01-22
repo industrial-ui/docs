@@ -22,7 +22,7 @@
 
           <template v-if="block.type === 'code'">
           <pre class="code">
-            <code v-html="block.data.code" />
+            <code>{{ block.data.code }}</code>
           </pre>
           </template>
 
@@ -81,7 +81,7 @@
     },
     async mounted () {
       const article = articles[this.$route.params.page as keyof typeof articles];
-      this.article = (await article()).default;
+      this.article = ((await article()) as any).default;
     },
     methods: {
       getTranslation,

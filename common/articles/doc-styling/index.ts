@@ -5,6 +5,7 @@ const article: ArticleType = {
   ...meta,
   article: {
     "time": 1609687585668,
+    "version": "2.19.0",
     "languages": ["rus"],
     "blocks": [
       {
@@ -204,8 +205,7 @@ const article: ArticleType = {
           ]
         }
       }
-    ],
-    "version": "2.19.0"
+    ]
   }
 };
 
