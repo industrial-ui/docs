@@ -6,5 +6,6 @@ const meta: ArticleMetadata = {
     default: 'Documentation styling',
     rus: 'Стилизация документации',
   },
+  contents: [],
 };
 export default meta;

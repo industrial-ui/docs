@@ -14,9 +14,15 @@ export type RouteInNavigation = {
   name: LangTextNode,
 }
 
+export type ContentsType = {
+  slug: string,
+  name: string,
+}
+
 export interface ArticleMetadata {
   id: string,
   title: LangTextNode,
+  contents: ContentsType[]
 }
 
 export interface ArticleType extends ArticleMetadata {

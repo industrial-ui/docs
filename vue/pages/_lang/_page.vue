@@ -1,5 +1,5 @@
 <template>
-  <Layout class="article-page">
+  <Layout class="article-page" :article="article">
     <article id="content">
       <h1>
         {{ article.title | tranlation }}
