@@ -31,8 +31,13 @@ const editorOutputToProxy = (data: OutputData & {languages?: string[]}, translat
     }
 
     // Make manipulations that transform any string with text into the LangTextNode for each block type
-    if (newBlock.type === 'paragraph' || newBlock.type === 'header') {
+    if (newBlock.type === 'paragraph') {
       newBlock.data.text = convertStringToLanguageObject(newBlock.data.text, translation?.lang, translationBlock?.data?.text);
+    } else if (newBlock.type === 'header') {
+      newBlock.data.text = convertStringToLanguageObject(newBlock.data.text, translation?.lang, translationBlock?.data?.text);
+      if (!newBlock.data.slug) {
+        newBlock.data.slug = '';
+      }
     } else if (newBlock.type === 'list') {
       newBlock.data.items = newBlock.data.items.map((str: string, i: number) => {
         const arrElem = translationBlock?.data?.items?.[i];

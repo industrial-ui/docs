@@ -19,6 +19,7 @@ const article: ArticleType = {
       {
         "type": "header",
         "data": {
+          "slug": "unpkg",
           "text": {
             "default": "UNPKG CDN"
           },
@@ -43,6 +44,7 @@ const article: ArticleType = {
       {
         "type": "header",
         "data": {
+          "slug": "npm-local-imports",
           "text": {
             "default": "NPM with local imports"
           },
@@ -105,6 +107,7 @@ const article: ArticleType = {
       {
         "type": "header",
         "data": {
+          "slug": "global-plugin",
           "text": {
             "default": "As a global plugin"
           },

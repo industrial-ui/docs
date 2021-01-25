@@ -11,7 +11,7 @@
           </template>
 
           <template v-if="block.type === 'header'">
-            <component :is="'h' + block.data.level" :key="i" v-html="getTranslation(block.data.text)" />
+            <component :is="'h' + block.data.level" :id="block.data.slug || ''" :key="i" v-html="getTranslation(block.data.text)" />
           </template>
 
           <template v-if="block.type === 'list'">
@@ -53,7 +53,7 @@
       </div>
     </article>
 
-    <a :href="'https://editor.industrial-ui.com/?article=' + article.id" class="article-edit">
+    <a :href="'https://editor.industrial-ui.com/?article=' + article.id" target="_blank" class="article-edit">
       <i class="gg-pen" />
       <span>Edit this article</span>
     </a>
@@ -91,7 +91,7 @@
 
 <style>
   .article-edit {
-    margin-top: 1rem;
+    margin-top: 0;
     margin-bottom: 2rem;
     cursor: pointer;
   }
@@ -99,9 +99,8 @@
   .article-edit span {
     display: inline-block;
     margin-left: 30px;
-    color: var(--text-color-primary);
-    text-decoration: underline;
-    text-decoration-color: var(--bg-color-hover);
+    color: var(--text-color-secondary);
+    font-size: 0.9em;
   }
 
   .gg-pen {
@@ -112,7 +111,7 @@
     width: 14px;
     height: 4px;
     border-right: 2px solid transparent;
-    box-shadow: 0 0 0 2px var(--text-color-primary), inset -2px 0 0 var(--text-color-primary);
+    box-shadow: 0 0 0 2px var(--text-color-secondary), inset -2px 0 0 var(--text-color-secondary);
     border-top-right-radius: 1px;
     border-bottom-right-radius: 1px;
   }
@@ -124,7 +123,7 @@
     position: absolute
   }
   .gg-pen::before {
-    background: var(--text-color-primary);
+    background: var(--text-color-secondary);
     border-left: 0;
     right: -6px;
     width: 3px;
@@ -137,7 +136,7 @@
     height: 7px;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-right: 7px solid var(--text-color-primary);
+    border-right: 7px solid var(--text-color-secondary);
     left: -11px;
     top: -2px
   }

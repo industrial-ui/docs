@@ -43,6 +43,7 @@ export interface ArticleBlockType {
     text?: LangTextNode,
 
     // type === 'header'
+    slug?: string,
     level?: number,
 
     // type === 'list'
