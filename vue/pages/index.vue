@@ -1,52 +1,18 @@
 <template>
-  <Layout class="index-page">
-    <div class="logo">
-      <img src="/img/logo.png" alt="Industrial-ui logo" />
-    </div>
-    <h1>Industrial-ui Vue</h1>
-  </Layout>
+  <IndexPage />
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Layout from '../components/Layout.vue';
+import IndexPage from '~/components/IndexPage.vue';
 import {dispatch, LANGUAGE_EVENT} from '../../common/dispatch';
 
 export default Vue.extend({
-    components: {
-      Layout,
-    },
-    mounted () {
-      const lang = localStorage.getItem(LANGUAGE_EVENT) || 'eng';
-      dispatch(LANGUAGE_EVENT, lang);
-      this.$router.push(`/${lang}`);
-    },
-  });
+  components: {IndexPage},
+  mounted () {
+    const lang = localStorage.getItem(LANGUAGE_EVENT) || 'eng';
+    dispatch(LANGUAGE_EVENT, lang);
+    this.$router.push(`/${lang}`);
+  },
+});
 </script>
-
-<style>
-  .index-page {
-    padding: 2rem;
-    align-items: center;
-    min-height: 100%;
-  }
-
-  .index-page .logo {
-    width: 192px;
-    height: 192px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-logo);
-    transition: background-color .3s;
-  }
-  .index-page img {
-    height: 125px;
-  }
-
-  .index-page h1 {
-    color: var(--text-color-primary);
-    transition: color .3s;
-  }
-</style>

@@ -90,10 +90,6 @@
 </script>
 
 <style>
-  .article-page {
-    padding: 1rem 2rem 2rem;
-  }
-
   .article-edit {
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -116,7 +112,7 @@
     width: 14px;
     height: 4px;
     border-right: 2px solid transparent;
-    box-shadow: 0 0 0 2px, inset -2px 0 0;
+    box-shadow: 0 0 0 2px var(--text-color-primary), inset -2px 0 0 var(--text-color-primary);
     border-top-right-radius: 1px;
     border-bottom-right-radius: 1px;
   }
@@ -141,7 +137,7 @@
     height: 7px;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-right: 7px solid;
+    border-right: 7px solid var(--text-color-primary);
     left: -11px;
     top: -2px
   }
