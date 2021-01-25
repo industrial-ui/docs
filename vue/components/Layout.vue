@@ -106,6 +106,16 @@
     color: var(--text-color-primary);
   }
 
+  @media screen and (max-width: 1024px) {
+    .app-layout > section {
+      width: 100%;
+      padding: 1rem 1rem;
+    }
+    .app-layout > aside {
+      display: none;
+    }
+  }
+
   .app-layout.index-page > aside {
     display: none;
   }
