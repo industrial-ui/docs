@@ -18,7 +18,11 @@ export default {
   ],
   plugins: ['./plugins/translation.ts'],
   components: false,
-  modules: [],
+  modules: [
+    ['nuxt-highlightjs', {
+      style: 'hybrid',
+    }]
+  ],
   buildModules: [
     '@nuxt/typescript-build'
   ],

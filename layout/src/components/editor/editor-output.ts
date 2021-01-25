@@ -48,7 +48,12 @@ const editorOutputToProxy = (data: OutputData & {languages?: string[]}, translat
           return convertStringToLanguageObject(elem, translation?.lang, translateElem);
         });
       });
+    } else if (newBlock.type === 'code') {
+      if (!newBlock.data.codeLang) {
+        newBlock.data.codeLang = 'html';
+      }
     }
+
     return newBlock as ArticleBlockType;
   });
 

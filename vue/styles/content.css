@@ -2,7 +2,7 @@
   padding-bottom: 2rem;
 }
 
-#content * {
+#content *:not([class*="hljs"]) {
   font-weight: 300;
   color: var(--text-color-primary);
 }
@@ -83,6 +83,12 @@
   font-size: 0.9em;
   background: transparent;
   color: whitesmoke;
+}
+
+#content .hljs {
+  display: initial;
+  padding: 0;
+  overflow-x: initial;
 }
 
 #content .inline-code {

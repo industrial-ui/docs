@@ -45,6 +45,7 @@ export interface ArticleBlockType {
 
     // type === 'code'
     code?: string,
+    codeLang?: string,
 
     // type === 'image'
     url?: string,

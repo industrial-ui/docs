@@ -36,6 +36,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "html",
           "code": "\n<!DOCTYPE html>\n<html>\n<head>\n  <!-- Import your styles -->\n  <link href=\"https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css\" rel=\"stylesheet\">\n</head>\n<body>\n<div id=\"app\">\n  <iui-button>Hello, world!</iui-button>\n</div>\n</body>\n<!-- Import Vue -->\n<script src=\"https://unpkg.com/vue/dist/vue.js\"></script>\n\n<!-- \n  Create Industrial-ui configuration.\n  It is important to have exactly IuiConfig variable name!\n-->\n<script>\n  const IuiConfig = {\n    globalClass: '',\n    components: { ... },\n    },\n  };\n</script>\n\n<!-- Import industrial-ui-vue and register as a Vue plugin -->\n<script src=\"https://unpkg.com/industrial-ui-vue\"></script>\n\n<!-- Initialize Vue app -->\n<script>\n  new Vue({\n    el: '#app',\n  })\n</script>\n</html>"
         }
       },
@@ -67,6 +68,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "bash",
           "code": "\nnpm i industrial-ui-vue"
         }
       },
@@ -81,6 +83,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "javascript",
           "code": "\nimport Vue from 'vue';\nimport config from './config';\nimport {iui} from 'industrial-ui-vue';\n\nVue.use(iui, config);"
         }
       },
@@ -95,6 +98,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "html",
           "code": "\n<template>\n  <Dropdown>\n    <template #trigger>\n      <Button>Click on me</Button>\n    </template>\n    Hello, world!\n  </Dropdown>\n</template>\n\n<script>\n  import { IuiDropdown as Dropdown, IuiButton as Button } from 'industrial-ui-vue';\n  export default {\n    components: { Dropdown, Button },\n  };\n</script>"
         }
       },
@@ -126,6 +130,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "bash",
           "code": "\nnpm i industrial-ui-vue"
         }
       },
@@ -140,6 +145,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "javascript",
           "code": "\nimport Vue from 'vue';\nimport config from './config';\nimport iui from 'industrial-ui-vue';\n\nVue.use(iui, config);"
         }
       },
@@ -154,6 +160,7 @@ const article: ArticleType = {
       {
         "type": "code",
         "data": {
+          "codeLang": "html",
           "code": "\n<template>\n  <iui-dropdown>\n    <template #trigger>\n      <iui-button>Click on me</iui-button>\n    </template>\n    Hello, world!\n  </iui-dropdown>\n</template>"
         }
       }
