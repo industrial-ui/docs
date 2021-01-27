@@ -1,6 +1,9 @@
 import {BlockTool, API, BlockToolConstructorOptions, BlockToolData} from '@editorjs/editorjs';
 
-type OutputCodeBlock = BlockToolData<{code: string}>;
+type OutputCodeBlock = BlockToolData<{code: string, codeLang: string}>;
+
+const ALLOWED_LANGUAGES = ['html', 'javascript', 'css', 'json', 'bash'];
+const DEFAULT_LANGUAGE = 'html';
 
 /**
  * Thanks to the https://github.com/editor-js/code for the base of this CodeTool
@@ -14,10 +17,12 @@ class CodeTool implements BlockTool {
     input: string,
     wrapper: string,
     textarea: string,
+    select: string,
   }
   nodes: {
     holder: HTMLElement|null,
-    textarea: HTMLElement|null,
+    textarea: HTMLTextAreaElement|null,
+    select: HTMLSelectElement|null,
   }
   savedData: OutputCodeBlock|null
 
@@ -41,15 +46,18 @@ class CodeTool implements BlockTool {
       input: this.api.styles.input,
       wrapper: 'ce-code',
       textarea: 'ce-code__textarea',
+      select: 'ce-code__select',
     };
 
     this.nodes = {
       holder: null,
       textarea: null,
+      select: null,
     };
 
     this.data = {
       code: data.code || '',
+      codeLang: data.codeLang || DEFAULT_LANGUAGE,
     };
 
     this.nodes.holder = this.drawView();
@@ -57,21 +65,32 @@ class CodeTool implements BlockTool {
 
   drawView (): HTMLElement {
     const wrapper = document.createElement('div'),
-      textarea = document.createElement('textarea');
+      textarea = document.createElement('textarea'),
+      select = document.createElement('select');
 
     wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
+
     textarea.classList.add(this.CSS.textarea, this.CSS.input);
     textarea.textContent = this.data.code;
-
     textarea.placeholder = this.placeholder;
-
     if (this.readOnly) {
       textarea.disabled = true;
     }
 
-    wrapper.appendChild (textarea);
+    select.classList.add(this.CSS.select, this.CSS.input);
+    ALLOWED_LANGUAGES.forEach((lang) => {
+      const option = document.createElement('option');
+      option.value = lang;
+      option.textContent = lang;
+      select.appendChild(option);
+    });
+    select.value = this.data.codeLang || DEFAULT_LANGUAGE;
+
+    wrapper.appendChild(textarea);
+    wrapper.appendChild(select);
 
     this.nodes.textarea = textarea;
+    this.nodes.select = select;
 
     return wrapper;
   }
@@ -81,16 +100,11 @@ class CodeTool implements BlockTool {
   }
 
   save (codeWrapper: HTMLElement) {
+    if (!this.nodes.textarea || !this.nodes.select) return;
+
     return {
-      code: (codeWrapper.querySelector('textarea') as HTMLTextAreaElement).value,
-    };
-  }
-
-  onPaste (event: CustomEvent) {
-    const content = event.detail.data;
-
-    this.data = {
-      code: content.textContent,
+      code: this.nodes.textarea.value,
+      codeLang: this.nodes.select.value,
     };
   }
 
@@ -101,8 +115,9 @@ class CodeTool implements BlockTool {
   set data (data: OutputCodeBlock) {
     this.savedData = data;
 
-    if (this.nodes.textarea) {
+    if (this.nodes.textarea && this.nodes.select) {
       this.nodes.textarea.textContent = data.code;
+      this.nodes.select.value = data.codeLang;
     }
   }
 
@@ -115,12 +130,6 @@ class CodeTool implements BlockTool {
 
   static get DEFAULT_PLACEHOLDER () {
     return 'Enter a code';
-  }
-
-  static get pasteConfig () {
-    return {
-      tags: [ 'pre' ],
-    };
   }
 
   static get sanitize () {
