@@ -12,9 +12,8 @@ const createEditor = async (data: {
   const List = (await import ('@editorjs/list')).default;
   const Table = (await import ('editorjs-table')).default;
   const InlineCode = (await import ('@editorjs/inline-code')).default;
-  // @ts-ignore
-  const Image = (await import ('../../components/editor/image-block')).default;
-  const Code = (await import ('../../components/editor/code-block')).default;
+  const Image = (await import ('./image-block')).default;
+  const Code = (await import ('./code-block')).default;
 
   return new EditorJS({
     ...data,
@@ -25,6 +24,7 @@ const createEditor = async (data: {
       code: Code,
       table: Table,
       image: {
+        // @ts-ignore
         class: Image,
         inlineToolbar: true,
         config: {

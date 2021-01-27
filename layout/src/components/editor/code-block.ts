@@ -8,7 +8,7 @@ const DEFAULT_LANGUAGE = 'html';
 /**
  * Thanks to the https://github.com/editor-js/code for the base of this CodeTool
  */
-class CodeTool implements BlockTool {
+export default class CodeBlock implements BlockTool {
   api: API
   readOnly: boolean
   placeholder: string
@@ -39,7 +39,7 @@ class CodeTool implements BlockTool {
     this.readOnly = readOnly;
     this.savedData = null;
 
-    this.placeholder = this.api.i18n.t(config.placeholder || CodeTool.DEFAULT_PLACEHOLDER);
+    this.placeholder = this.api.i18n.t(config.placeholder || 'Enter a code');
 
     this.CSS = {
       baseClass: this.api.styles.block,
@@ -128,15 +128,9 @@ class CodeTool implements BlockTool {
     };
   }
 
-  static get DEFAULT_PLACEHOLDER () {
-    return 'Enter a code';
-  }
-
   static get sanitize () {
     return {
       code: true,
     };
   }
 }
-
-export default CodeTool;
