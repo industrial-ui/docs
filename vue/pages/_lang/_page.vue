@@ -22,7 +22,7 @@
 
           <template v-if="block.type === 'code'">
           <pre class="code">
-            <code v-highlight :class="block.data.codeLang">{{ block.data.code }}</code>
+            <code :class="block.data.codeLang" v-html="block.data.code" />
           </pre>
           </template>
 

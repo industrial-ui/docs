@@ -1,10 +1,26 @@
 import {BlockTool, API, BlockToolConstructorOptions, BlockToolData} from '@editorjs/editorjs';
+import Prism, {Grammar} from 'prismjs';
 
 type OutputCodeBlock = BlockToolData<{code: string, codeLang: string}>;
 
-const ALLOWED_LANGUAGES = ['html', 'javascript', 'css', 'json', 'bash'];
+export type AllowedLanguagesType = 'html'|'javascript'|'css'|'json'|'bash';
+const ALLOWED_LANGUAGES: AllowedLanguagesType[] = ['html', 'javascript', 'css', 'json', 'bash'];
 const DEFAULT_LANGUAGE = 'html';
 
+const prismLanguages: Record<AllowedLanguagesType, Grammar> = {
+  'html': Prism.languages.html,
+  'javascript': Prism.languages.javascript,
+  'css': Prism.languages.css,
+  'json': Prism.languages.json,
+  'bash': Prism.languages.bash,
+};
+
+const filterFromPrism = (code: string): string => {
+  return code
+    .replace(/<span[^>]*token[^>]*>|<\/span>/gi, '')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
 /**
  * Thanks to the https://github.com/editor-js/code for the base of this CodeTool
  */
@@ -71,7 +87,7 @@ export default class CodeBlock implements BlockTool {
     wrapper.classList.add(this.CSS.baseClass, this.CSS.wrapper);
 
     textarea.classList.add(this.CSS.textarea, this.CSS.input);
-    textarea.textContent = this.data.code;
+    textarea.textContent = filterFromPrism(this.data.code);
     textarea.placeholder = this.placeholder;
     if (this.readOnly) {
       textarea.disabled = true;
@@ -102,8 +118,14 @@ export default class CodeBlock implements BlockTool {
   save (codeWrapper: HTMLElement) {
     if (!this.nodes.textarea || !this.nodes.select) return;
 
+    const prismed = Prism.highlight(
+      this.nodes.textarea.value,
+      prismLanguages[this.nodes.select.value as AllowedLanguagesType],
+      this.nodes.select.value
+    );
+
     return {
-      code: this.nodes.textarea.value,
+      code: prismed,
       codeLang: this.nodes.select.value,
     };
   }
@@ -116,7 +138,7 @@ export default class CodeBlock implements BlockTool {
     this.savedData = data;
 
     if (this.nodes.textarea && this.nodes.select) {
-      this.nodes.textarea.textContent = data.code;
+      this.nodes.textarea.textContent = filterFromPrism(data.code);
       this.nodes.select.value = data.codeLang;
     }
   }
