@@ -1,5 +1,7 @@
 import {BlockTool, API, BlockToolConstructorOptions, BlockToolData} from '@editorjs/editorjs';
 import Prism, {Grammar} from 'prismjs';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-bash';
 
 type OutputCodeBlock = BlockToolData<{code: string, codeLang: string}>;
 

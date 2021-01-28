@@ -21,8 +21,8 @@
           </template>
 
           <template v-if="block.type === 'code'">
-          <pre class="code">
-            <code :class="block.data.codeLang" v-html="block.data.code" />
+          <pre class="code" :class="'language-' + block.data.codeLang">
+            <code v-html="block.data.code" />
           </pre>
           </template>
 

@@ -15,6 +15,7 @@ export default {
   css: [
     './styles/docs.css',
     './styles/content.css',
+    './styles/prism.css',
   ],
   plugins: ['./plugins/translation.ts'],
   components: false,
