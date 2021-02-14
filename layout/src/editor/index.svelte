@@ -37,8 +37,9 @@
     if (articleParam) {
       const article = allArticles[articleParam];
       if (article) {
-        const data = (await article());
-        const input = editorProxyToInput(data.default.article as OutputData, 'default');
+        // const data = (await article());
+        const data = article;
+        const input = editorProxyToInput(data.article as OutputData, 'default');
         editorMain.render(input);
       }
     }

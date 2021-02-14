@@ -5,8 +5,9 @@ const getTranslation = (textNode: LangTextNode, lang: SupportedLanguages|null = 
   if (!textNode) return '';
 
   if (lang) return textNode[lang] || textNode.default;
+  if (lang === null) return textNode.default;
 
-  if (typeof window === 'undefined') return '';
+  if (typeof window === 'undefined') return textNode.default || '';
 
   const currentLanguage = (sessionStorage.getItem(LANGUAGE_EVENT) as SupportedLanguages|null);
   return textNode[currentLanguage || 'default'] || textNode.default || '';
