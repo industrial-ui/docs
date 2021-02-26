@@ -16,9 +16,9 @@
               v-for="content in article.contents"
               :key="content.slug"
           >
-            <nuxt-link :to="`#${content.slug}`">
+            <a :href="getContentLink(content.slug)">
               {{ content.name }}
-            </nuxt-link>
+            </a>
           </li>
         </ul>
       </template>
@@ -29,7 +29,7 @@
 <script lang="ts">
   import Vue, {PropType} from 'vue';
   import Footer from './Footer.vue';
-  import {ArticleType} from '../../common/types';
+  import {ArticleType, SupportedLanguages} from '../../common/types';
 
   export default Vue.extend({
     name: 'Layout',
@@ -46,6 +46,11 @@
         default: null,
       },
     },
+    methods: {
+      getContentLink (slug: string): string {
+        return this.$route.path + `#${slug}`;
+      }
+    }
   });
 </script>
 
