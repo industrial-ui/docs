@@ -60,5 +60,8 @@ export interface ArticleBlockType {
 
     // type === 'table'
     content?: LangTextNode[][],
+
+    // type === 'showcase'
+    component?: string // URL path to the showcase demo from /examples folder
   }
 }

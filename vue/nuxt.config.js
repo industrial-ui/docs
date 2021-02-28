@@ -16,8 +16,12 @@ export default {
     './styles/docs.css',
     './styles/content.css',
     './styles/prism.css',
+    './styles/ui.css',
   ],
-  plugins: ['./plugins/translation.ts'],
+  plugins: [
+    './plugins/translation.ts',
+    './plugins/iui.ts'
+  ],
   components: false,
   buildModules: [
     '@nuxt/typescript-build'

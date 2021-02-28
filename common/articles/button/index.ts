@@ -27,7 +27,7 @@ const article: ArticleType = {
             "rus": "Самый простой пример использования Кнопки с разными стилям, выполненными благодаря&nbsp;<code class=\"inline-code\">is:properties.</code>"
           }
         }
-      }
+      },
     ]
   }
 };

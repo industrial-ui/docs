@@ -49,6 +49,10 @@
               </table>
             </div>
           </template>
+
+          <template v-if="block.type === 'showcase'">
+            <Showcase :data="block.data" />
+          </template>
         </template>
       </div>
     </article>
@@ -66,9 +70,10 @@
   import articles from '../../../common/articles';
   import getTranslation from '../../../common/get-translation';
   import Layout from '~/components/Layout.vue';
+  import Showcase from '~/components/Showcase.vue';
 
   export default Vue.extend({
-    components: {Layout},
+    components: {Showcase, Layout},
     data () {
       return {
         article: {} as ArticleType,

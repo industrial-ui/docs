@@ -161,6 +161,12 @@ const article: ArticleType = {
         }
       },
       {
+        "type": "showcase",
+        "data": {
+          "component": "button/simple.vue",
+        }
+      },
+      {
         "type": "paragraph",
         "data": {
           "text": {
