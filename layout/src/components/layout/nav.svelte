@@ -3,7 +3,7 @@
   import type {SupportedLanguages} from 'common/types';
   import {dispatch, LINK_EVENT} from 'common/dispatch';
   import getTranslation from 'common/get-translation';
-  import navigation from 'common/navigation';
+  import navigation from 'common/articles/navigation';
   import Lang from './lang.svelte';
 
   export let lang: SupportedLanguages|''|null;

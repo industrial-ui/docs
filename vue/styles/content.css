@@ -67,7 +67,7 @@
 }
 
 #content strong, #content b {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 #content ul, #content ol {

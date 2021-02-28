@@ -1,4 +1,4 @@
-import {SidebarNavigation} from './types';
+import {SidebarNavigation} from '../types';
 
 const navigation: SidebarNavigation[] = [
   {
@@ -29,6 +29,13 @@ const navigation: SidebarNavigation[] = [
       rus: 'Компоненты',
     },
     nested: [
+      {
+        slug: 'button',
+        name: {
+          default: 'Button',
+          rus: 'Кнопка',
+        },
+      },
       {
         slug: 'dropdown',
         name: {
