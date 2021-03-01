@@ -37,8 +37,9 @@
     if (articleParam) {
       const article = allArticles[articleParam];
       if (article) {
-        // const data = (await article());
         const data = article;
+        pastedArticle = JSON.parse(JSON.stringify(data.article)); // Important to have a deep copy
+        usedLanguages = data.article.languages || [];
         const input = editorProxyToInput(data.article as OutputData, 'default');
         editorMain.render(input);
       }
@@ -148,7 +149,9 @@
         The Editor is loading. Please, wait...
       </p>
     {/if}
-    <article id="editor-translate" />
+    <div>
+      <article id="editor-translate" />
+    </div>
   </div>
 
   <div class="right">
@@ -157,7 +160,9 @@
         The Editor is loading. Please, wait...
       </p>
     {/if}
-    <article id="editor-main" />
+    <div>
+      <article id="editor-main" />
+    </div>
   </div>
 
   <div class="toolbar">
@@ -221,7 +226,7 @@
     width: 90%;
     margin: 0 auto;
   }
-  .left, .right {
+  .left > div, .right > div {
     padding: 1.5rem 3rem;
   }
   .loading {
@@ -234,10 +239,12 @@
   }
   .left.open + .right {
     width: 50%;
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-left-color: var(--hr-color);
-    transition: border-left-color .3s;
+  }
+  .left.open > div {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: var(--hr-color);
+    transition: border-right-color .3s;
   }
 
   .toolbar {

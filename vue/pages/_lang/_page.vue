@@ -88,10 +88,6 @@
         article: articles[params.page as keyof typeof articles] || {},
       }
     },
-    // async mounted () {
-    //   const article = articles[this.$route.params.page as keyof typeof articles];
-    //   this.article = ((await article()) as any).default;
-    // },
   });
 </script>
 
