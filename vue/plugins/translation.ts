@@ -1,4 +1,10 @@
-import Vue from 'vue';
 import getTranslation from '../../common/get-translation';
+import translateInterface from '../../common/articles/interface-lang';
+import type { Plugin } from '@nuxt/types'
 
-Vue.filter('tranlation', getTranslation);
+const translation: Plugin = (context, inject) => {
+  inject('t', getTranslation);
+  inject('interface', translateInterface);
+}
+
+export default translation

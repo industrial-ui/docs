@@ -5,7 +5,7 @@
     </div>
     <h1>Industrial-ui Vue</h1>
 
-    <nuxt-link v-if="lang" class="link" :to="`/${lang}/installation`">{{ t[lang] }}</nuxt-link>
+    <nuxt-link v-if="lang" class="link" :to="`/${lang}/installation`">{{ $interface('get_started', lang) }}</nuxt-link>
   </Layout>
 </template>
 
@@ -17,14 +17,6 @@ export default Vue.extend({
   name: 'IndexPage',
   components: {
     Layout,
-  },
-  data () {
-    return {
-      t: {
-        eng: 'Get started',
-        rus: 'Начать',
-      },
-    };
   },
   computed: {
     lang () {

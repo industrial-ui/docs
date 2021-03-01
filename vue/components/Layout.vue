@@ -10,7 +10,7 @@
 
     <aside>
       <template v-if="article && article.contents && article.contents.length">
-        <h3>Contents</h3>
+        <h3>{{ $interface('contents', lang) }}</h3>
         <ul>
           <li
               v-for="content in article.contents"
@@ -44,6 +44,11 @@
       article: {
         type: Object as PropType<ArticleType>,
         default: null,
+      },
+    },
+    computed: {
+      lang () {
+        return this.$route.params.lang;
       },
     },
     methods: {

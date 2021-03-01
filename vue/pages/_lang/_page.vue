@@ -2,21 +2,21 @@
   <Layout class="article-page" :article="article">
     <article id="content">
       <h1>
-        {{ article.title | tranlation }}
+        {{ $t(article.title, lang) }}
       </h1>
       <div v-if="article.article">
         <template v-for="(block, i) in article.article.blocks">
           <template v-if="block.type === 'paragraph'">
-            <p :key="i" v-html="getTranslation(block.data.text)" />
+            <p :key="i" v-html="$t(block.data.text, lang)" />
           </template>
 
           <template v-if="block.type === 'header'">
-            <component :is="'h' + block.data.level" :id="block.data.slug || ''" :key="i" v-html="getTranslation(block.data.text)" />
+            <component :is="'h' + block.data.level" :id="block.data.slug || ''" :key="i" v-html="$t(block.data.text, lang)" />
           </template>
 
           <template v-if="block.type === 'list'">
             <component :is="block.data.style === 'ordered' ? 'ol' : 'ul'" :key="i">
-              <li v-for="(item, j) in block.data.items" :key="j" v-html="getTranslation(item)" />
+              <li v-for="(item, j) in block.data.items" :key="j" v-html="$t(item, lang)" />
             </component>
           </template>
 
@@ -29,7 +29,7 @@
           <template v-if="block.type === 'image'">
             <figure>
               <img :src="block.data.url" alt="" />
-              <figcaption v-html="getTranslation(block.data.caption)" />
+              <figcaption v-html="$t(block.data.caption, lang)" />
             </figure>
           </template>
 
@@ -38,12 +38,12 @@
               <table v-if="block.data.content && block.data.content.length > 1">
                 <thead>
                 <tr v-for="(row, i) in block.data.content.slice(0, 1)" :key="'row' + i">
-                  <th v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
+                  <th v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="$t(cell, lang)" />
                 </tr>
                 </thead>
                 <tbody>
                 <tr v-for="(row, i) in block.data.content.slice(1)" :key="'row' + i">
-                  <td v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="getTranslation(cell)" />
+                  <td v-for="(cell, j) in row" :key="'row' + i + 'cell' + j" v-html="$t(cell, lang)" />
                 </tr>
                 </tbody>
               </table>
@@ -59,7 +59,7 @@
 
     <a :href="'https://editor.industrial-ui.com/?article=' + article.id" target="_blank" class="article-edit">
       <i class="gg-pen" />
-      <span>Edit this article</span>
+      <span>{{ $interface('edit_article', lang) }}</span>
     </a>
   </Layout>
 </template>
@@ -68,7 +68,6 @@
   import Vue from 'vue';
   import type {ArticleType, SupportedLanguages} from '../../../common/types';
   import articles from '../../../common/articles';
-  import getTranslation from '../../../common/get-translation';
   import Layout from '~/components/Layout.vue';
   import Showcase from '~/components/Showcase.vue';
 
@@ -93,9 +92,6 @@
     //   const article = articles[this.$route.params.page as keyof typeof articles];
     //   this.article = ((await article()) as any).default;
     // },
-    methods: {
-      getTranslation,
-    },
   });
 </script>
 
