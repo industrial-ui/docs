@@ -1,0 +1,94 @@
+.showcase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding: 0 1rem 0;
+  border: 1px solid var(--border-color);
+  background-color: #1c1d21;
+  border-radius: 0.5rem;
+}
+
+.showcase_content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.showcase_toolbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0 1rem;
+  border-top: 1px solid #EEEEEE;
+}
+
+.showcase_toolbar_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow .2s;
+}
+
+.showcase_toolbar_icon:hover {
+  box-shadow: 0 0 3px 1px #777777;
+}
+
+.showcase_toolbar_icon:focus {
+  outline: none;
+}
+
+.showcase_toolbar_icon:not(:last-of-type) {
+  margin-right: 1.5rem;
+}
+
+.showcase_toolbar_icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: white;
+}
+
+.showcase_code {
+  position: relative;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.showcase .showcase_toolbar:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: #EEEEEE;
+  transition: width .3s;
+}
+
+.showcase.expanded .showcase_toolbar:after {
+  width: 100%;
+}
+
+.showcase-code-enter-active, .showcase-code-leave-active {
+  transition: opacity .3s, height .3s;
+}
+
+.showcase-code-enter, .showcase-code-leave-to {
+  height: 0;
+  opacity: 0;
+}

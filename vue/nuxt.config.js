@@ -15,6 +15,7 @@ export default {
   css: [
     './styles/docs.css',
     './styles/content.css',
+    './styles/showcase.css',
     './styles/prism.css',
     './styles/ui.css',
   ],

@@ -2,7 +2,7 @@
   padding-bottom: 2rem;
 }
 
-#content *:not([class*="language-"]):not(.token):not(code) {
+#content *:not([class*="language-"]):not(.token):not(code):not(.showcase_content *) {
   font-weight: 300;
   color: var(--text-color-primary);
 }

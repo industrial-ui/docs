@@ -1,0 +1,18 @@
+/**
+
+ */
+
+.ui.button {
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--bg-color-hover);
+  background-color: var(--bg-color-hover);
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.ui.dropdown {
+
+}

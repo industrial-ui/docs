@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <IuiButton>Hello</IuiButton>
-  </div>
+  <IuiButton>Hello</IuiButton>
 </template>
 
 <script lang="ts">
