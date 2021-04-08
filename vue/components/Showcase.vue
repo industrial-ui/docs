@@ -19,12 +19,12 @@
     </div>
 
     <transition name="showcase-code" mode="in-out">
-      <pre v-if="show === 'code'" class="showcase_code code" :class="'language-' + code.language">
-        <code v-html="code.data" />
+      <pre v-if="show === 'code'" class="showcase_code code" :class="'language-html'">
+        <code v-html="data.demoCode" />
       </pre>
 
-      <pre v-else-if="show === 'config'" class="showcase_code code" :class="'language-' + config.language">
-        <code v-html="config.data" />
+      <pre v-else-if="show === 'config'" class="showcase_code code" :class="'language-javascript'">
+        <code v-html="data.demoConfig" />
       </pre>
     </transition>
   </div>
@@ -39,28 +39,26 @@ export default Vue.extend({
   name: 'Showcase',
   props: {
     data: {
-      type: Object as PropType<{ component: string }>,
+      type: Object as PropType<{
+        path: string,
+        demoCode: string,
+        demoConfig: string,
+      }>,
       default: () => ({
-        component: '',
+        path: '',
+        demoCode: '',
+        demoConfig: '',
       }),
     },
   },
   data () {
     return {
       show: null as ShowType,
-      code: {
-        data: "\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>template</span><span class=\"token punctuation\">></span></span>\n  <span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>iui-dropdown</span><span class=\"token punctuation\">></span></span>\n    <span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>template</span> <span class=\"token attr-name\">#trigger</span><span class=\"token punctuation\">></span></span>\n      <span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>iui-button</span><span class=\"token punctuation\">></span></span>Click on me<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>iui-button</span><span class=\"token punctuation\">></span></span>\n    <span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>template</span><span class=\"token punctuation\">></span></span>\n    Hello, world!\n  <span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>iui-dropdown</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>template</span><span class=\"token punctuation\">></span></span>",
-        language: 'css',
-      },
-      config: {
-        data: '\n  <span class=\"token keyword\">const</span> IuiConfig <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span>\n    globalClass<span class=\"token operator\">:</span> <span class=\"token string\">\'\'</span><span class=\"token punctuation\">,</span>\n    components<span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span> <span class=\"token operator\">...</span> <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>',
-        language: 'javascript',
-      }
     };
   },
   computed: {
     component () {
-      return () => import(`../examples/${this.data.component}`);
+      return () => import(`../examples/${this.data.path}`);
     },
   },
   methods: {

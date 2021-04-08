@@ -62,7 +62,7 @@ export interface ArticleBlockType {
     content?: LangTextNode[][],
 
     // type === 'showcase'
-    component?: string, // URL path to the showcase demo from /examples folder
+    path?: string, // URL path to the showcase demo from /examples folder
     demoCode?: string, // Code of the showcase (in HTML)
     demoConfig?: string, // IUI configuration code (in JavaScript)
   }
