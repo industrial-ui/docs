@@ -108,6 +108,10 @@
   background-color: rgb(59, 59, 59);
 }
 
+#editor .ce-showcase > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 650px) {
   #editor .ce-toolbar {
     background-color: transparent;

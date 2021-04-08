@@ -14,6 +14,7 @@ const createEditor = async (data: {
   const InlineCode = (await import ('@editorjs/inline-code')).default;
   const Image = (await import ('./image-block')).default;
   const Code = (await import ('./code-block')).default;
+  const Showcase = (await import ('./showcase-block')).default;
 
   return new EditorJS({
     ...data,
@@ -22,6 +23,8 @@ const createEditor = async (data: {
       list: List,
       // @ts-ignore
       code: Code,
+      // @ts-ignore
+      showcase: Showcase,
       table: Table,
       image: {
         // @ts-ignore

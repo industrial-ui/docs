@@ -63,7 +63,7 @@ export interface ArticleBlockType {
 
     // type === 'showcase'
     component?: string, // URL path to the showcase demo from /examples folder
-    // TODO: Добавить типы для описания showcase'а: demoCode и configCode, demoLanguage и configLanguage
-    // TODO: И еще нужен плагин для эдитора с showcase'ом
+    demoCode?: string, // Code of the showcase (in HTML)
+    demoConfig?: string, // IUI configuration code (in JavaScript)
   }
 }
