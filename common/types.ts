@@ -62,6 +62,8 @@ export interface ArticleBlockType {
     content?: LangTextNode[][],
 
     // type === 'showcase'
-    component?: string // URL path to the showcase demo from /examples folder
+    component?: string, // URL path to the showcase demo from /examples folder
+    // TODO: Добавить типы для описания showcase'а: demoCode и configCode, demoLanguage и configLanguage
+    // TODO: И еще нужен плагин для эдитора с showcase'ом
   }
 }

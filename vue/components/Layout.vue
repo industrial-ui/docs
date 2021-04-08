@@ -107,9 +107,9 @@
     height: inherit;
     padding: .05rem 0 .05rem .7rem;
     color: var(--text-color-secondary);
-    font-size: .85em;
+    font-size: .8em;
     font-weight: 300;
-    line-height: 1.8em;
+    line-height: 1.6em;
     transition: color .2s;
   }
   .app-layout > aside ul a:hover {

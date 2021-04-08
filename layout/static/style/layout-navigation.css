@@ -24,7 +24,7 @@
 
 .nav .route header, .nav .route a {
   padding-left: 2rem;
-  line-height: 2em;
+  line-height: 1.8em;
 }
 
 .nav .route header {
@@ -40,7 +40,7 @@
 }
 
 .nav .route li {
-  height: 2em;
+  height: 1.8em;
   color: var(--text-color-primary);
 }
 
@@ -58,7 +58,7 @@
   width: inherit;
   height: inherit;
   display: block;
-  font-size: 1em;
+  font-size: 0.95em;
   text-transform: capitalize;
 }
 

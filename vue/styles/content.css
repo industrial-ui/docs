@@ -8,7 +8,7 @@
 }
 
 #content *:not(code *) {
-  font-family: 'Noto Sans', sans-serif !important;
+  font-family: 'Verdana', sans-serif !important;
 }
 
 #content ul {
@@ -22,7 +22,7 @@
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   line-height: 130%;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Verdana', sans-serif;
 }
 
 #content h1:first-child {
