@@ -320,7 +320,7 @@
     .toolbar .translate-button, .left {
       display: none;
     }
-    .right {
+    .right > div {
       width: 100%;
       padding: 1.5rem 0;
     }

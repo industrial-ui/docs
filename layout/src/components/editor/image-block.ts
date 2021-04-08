@@ -35,6 +35,7 @@ export default class SimpleImage implements BlockTool {
     }
 
     const input = document.createElement('input');
+    input.classList.add('cdx-input');
 
     input.placeholder = this.config.placeholder || 'Paste an image URL...';
     input.addEventListener('paste', (event) => {
@@ -51,6 +52,7 @@ export default class SimpleImage implements BlockTool {
     const caption = document.createElement('div');
 
     image.src = url;
+    caption.classList.add('cdx-input');
     caption.contentEditable = 'true';
     caption.innerHTML = captionText || '';
 
