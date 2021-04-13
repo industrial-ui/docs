@@ -105,9 +105,10 @@ export default class CodeBlock implements BlockTool {
   save (codeWrapper: HTMLElement) {
     if (!this.nodes.textarea || !this.nodes.select) return;
 
-    const prismed = highlightCode(this.nodes.textarea.value, this.nodes.select.value as AllowedLanguagesType);
+    const prismed = highlightCode(this.nodes.textarea.value, this.nodes.select.value as AllowedLanguagesType) || '';
+    const code = '\n' + prismed.trim();
     return {
-      code: prismed,
+      code,
       codeLang: this.nodes.select.value,
     };
   }

@@ -35,9 +35,7 @@ const editorOutputToProxy = (data: OutputData & {languages?: string[]}, translat
       newBlock.data.text = convertStringToLanguageObject(newBlock.data.text, translation?.lang, translationBlock?.data?.text);
     } else if (newBlock.type === 'header') {
       newBlock.data.text = convertStringToLanguageObject(newBlock.data.text, translation?.lang, translationBlock?.data?.text);
-      if (!newBlock.data.slug) {
-        newBlock.data.slug = '';
-      }
+      newBlock.data.slug = encodeURIComponent(newBlock.data.text?.default?.toLowerCase()?.replace(/ /g, '-') || '');
     } else if (newBlock.type === 'list') {
       newBlock.data.items = newBlock.data.items.map((str: string, i: number) => {
         const arrElem = translationBlock?.data?.items?.[i];
