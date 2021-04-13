@@ -59,7 +59,7 @@
 #content span
 {
   line-height: 1.25em;
-  text-align: justify;
+  text-align: left;
 }
 
 #content li {
@@ -93,8 +93,8 @@
 #content .inline-code {
   color: #f5503d;
   letter-spacing: 0.4px;
-  background-color: #ebefef;
-  padding: .3rem .5rem;
+  background-color: #ecf0f0;
+  padding: .15rem .25rem;
   border-radius: .3rem;
 }
 
